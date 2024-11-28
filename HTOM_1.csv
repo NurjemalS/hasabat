@@ -1,0 +1,60 @@
+number,abbr,name,number_of_meetings,number_of_participants,students,profs,parents,sectors,age(0-17),age(18-29),age(30-59),60+,female,male,number_of_topics,number_of_suggestions,topic-1,topic-2,topic-3,topic-4,topic-5,topic-6,topic-7,topic-8,topic-9,topic-10,topic-11,topic-12,topic-13,topic-14,topic-15,topic-16,topic-17,topic-1-suggestion-number,topic-2-suggestion-number,topic-3-suggestion-number,topic-4-suggestion-number,topic-5-suggestion-number,topic-6-suggestion-number,topic-7-suggestion-number,topic-8-suggestion-number,topic-9-suggestion-number,topic-10-suggestion-number,topic-11-suggestion-number,topic-12-suggestion-number,topic-13-suggestion-number,topic-14-suggestion-number,topic-15-suggestion-number,topic-16-suggestion-number,topic-17-suggestion-number
+1,,Türkmenistanyň  Söwda we daşary ykdysady aragatnaşyklar ministrliginiň  Söwda hünär-tehniki okuw mekdebi,1,12,4,7,,1,,6,5,1,5,7,5,5,1,1,1,1,,,,,,,,,,,,,1,1,1,1,1,,,,,,,,,,,,,1
+2,,Aşgabat şäher häkimliginiň 4-nji hünär-tehniki okuw mekdebi,1,122,82,6,20,14,,82,31,9,35,87,8,8,1,1,1,1,,1,,,,,1,,,,1,,1,,1,,,1,,1,1,1,,1,,1,,1,,
+3,,Aşgabat şäher häkimliginiň 6-njy hünär-tehniki okuw mekdebi,1,122,82,6,20,14,,82,31,9,35,87,8,8,1,1,1,1,,1,,,,,1,,,,1,,1,1,1,1,1,,1,,,,,1,,,,1,,1
+4,,Aşgabat şäher häkimliginiň 8-nji hünär-tehniki okuw mekdebi,8,156,135,7,,14,,115,37,4,38,118,8,14,1,1,1,1,1,1,1,1,,,,,,,,,,2,2,1,2,2,1,1,1,1,1,,,,,,,
+5,,Türkmenistanyň Telekommunikasiýalar we informatika institutynyň Infokommunikasiýa hünär-tehniki okuw mekdebi,1,55,44,4,3,4,2,42,9,2,22,33,8,15,1,1,1,1,,1,,,,,1,,,,1,,1,2,3,1,1,,2,,,,,2,,,,2,,2
+6,,"Türkmenistanyň Telewideniýe, radiogepleşikler we kinematografiýa baradaky döwlet komitetiniň hünär-tehniki okuw mekdebi",1,230,166,4,4,56,10,45,155,20,100,130,5,1,1,1,1,1,,1,,,,,,,,,,,,,,,,,1,,,,,,,,,,,
+7,,Ahal welaýat häkimliginiň 7-nji hünär-tehniki okuw mekdebi,1,58,19,14,9,16,12,34,9,3,10,48,8,5,1,1,1,1,,1,,,,,1,,,,1,,1,1,1,,1,,1,,,,,,,,,,,1
+8,,Ahal welaýat häkimliginiň 4-nji hünär-tehniki okuw mekdebi,1,29,17,6,3,3,0,2,26,1,6,23,5,9,1,1,,1,,1,,,,,,,,,,,1,2,1,,3,,1,,,,,,,,,,,2
+9,,Ahal welaýatynyň Kaka etrap häkimliginiň 1-nji hünär-tehniki okuw mekdebi,1,20,2,10,3,5,2,3,10,5,8,12,4,4,,1,1,1,,1,,,,,,,,,,,,,1,1,1,,1,,,,,,,,,,,
+10,,Ahal welaýatynyň Sarahs etrap häkimliginiň 3-nji hünär-tehniki okuw mekdebi,2,12,,4,4,4,,4,8,,7,5,5,5,1,1,1,1,1,,,,,,,,,,,,,1,1,1,1,1,,,,,,,,,,,,
+11,,”Türkmenobahyzmat” döwlet birleşiginiň “Ahalobahyzmat” önümçilik birleşiginiň Bäherden etrabyndaky hünär-tehniki okuw mekdebi,1,36,13,16,4,3,,20,10,6,16,20,8,4,1,1,1,1,,1,,,,,1,,,,1,,1,1,1,1,1,,,,,,,,,,,,,
+12,,Ahal welaýat häkimliginiň 5-nji hünär-tehniki okuw mekdebi,1,27,10,4,5,8,,10,15,2,9,18,5,5,1,1,1,1,,,,,,,,,,,,,1,1,1,1,1,,,,,,,,,,,,,1
+13,,Ahal welaýat häkimliginiň 6-njy hünär-tehniki okuw mekdebi,2,42,31,7,2,2,6,9,24,3,20,22,5,5,1,1,1,1,,1,,,,,,,,,,,,1,1,1,1,,1,,,,,,,,,,,
+14,,Ahal welaýatynyň Tejen etrap häkimliginiň 2-nji hünär-tehniki okuw mekdebi,2,23,12,8,2,1,,6,15,2,8,15,6,4,1,1,1,1,,1,,,,,1,,,,,,,1,1,1,1,,,,,,,,,,,,,
+15,,”Türkmenobahyzmat” döwlet birleşiginiň “Ahalobahyzmat” önümçilik birleşiginiň Tejen şäherindäki  hünär-tehniki okuw mekdebi,1,32,4,16,4,8,,12,15,5,13,19,6,4,1,1,,1,,1,,,,,1,,,,1,,,1,1,,1,,1,,,,,,,,,,,
+16,,“Türkmennebit” döwlet konserniniň Türkmenbaşydaky nebiti gaýtadan işleýän zawodlar toplumynyň hünär-tehniki okuw mekdebi,1,22,5,8,2,7,2,4,13,3,6,16,2,1,1,,,,,1,,,,,,,,,,,,,,,,,1,,,,,,,,,,,
+17,,Balkanabat nebitçilik orta hünär okuw mekdebiniň  2-nji hünär-tehniki okuw mekdebi,1,38,5,20,5,8,5,6,22,5,18,20,8,8,1,1,1,1,,1,,,,,1,,,,1,,1,1,1,1,1,,1,,,,,1,,,,1,,1
+18,,”Türkmenobahyzmat” döwlet birleşiginiň “Balkanobahyzmat” önümçilik birleşiginiň Gyzylarbat etrabyndaky hünär-tehniki okuw mekdebi,1,45,23,8,10,4,,10,32,3,5,40,5,3,1,1,1,1,,1,,,,,,,,,,,,1,1,,,,1,,,,,,,,,,,
+19,,Balkanabat şäher häkimliginiň Gumdag şäherçesindäki 3-nji hünär-tehniki okuw mekdebi,1,37,20,9,5,3,0,4,27,6,17,20,6,3,1,1,1,1,,1,,,,,1,,,,,,,,,,1,,1,,,,,1,,,,,,
+20,,”Türkmenobahyzmat” döwlet birleşiginiň “Balkanobahyzmat” önümçilik birleşiginiň Bereket şäherindäki hünär-tehniki okuw mekdebi,1,40,10,16,5,9,,25,15,,17,23,5,3,1,1,1,1,1,1,,,,,,,,,,,,1,1,,,,1,,,,,,,,,,,
+21,,Balkan welaýat häkimliginiň Gyzylarbat etrabyndaky hünär-tehniki okuw mekdebi,1,23,5,8,5,5,,,19,4,9,14,6,3,1,,1,1,,1,,,,,1,,,,,,1,,,,1,,1,,,,,,,,,,,1
+22,,Balkanabat şäher häkimliginiň Hazar şäherçesindäki 1-nji hünär-tehniki okuw mekdebi,1,35,30,3,0,2,6,5,20,4,26,9,7,7,1,1,1,1,,1,,,,,1,,,,1,,,1,1,1,1,,1,,,,,1,,,,1,,
+23,,Daşoguz welaýat häkimliginiň garamagyndaky 1-nji hünär-tehniki okuw mekdebi,1,124,74,15,10,25,13,74,27,10,39,85,2,2,,,,,,,,,,,1,,,,1,,,,,,,,,,,,,1,,,,1,,
+24,,Daşoguz welaýat häkimliginiň garamagyndaky 2-nji hünär-tehniki okuw mekdebi,2,142,60,17,46,19,11,73,41,17,53,89,3,2,1,,,,,,,,,,1,,,,1,,,1,,,,,,,,,,1,,,,,,
+25,,Boldumsaz etrap  häkimliginiň garamagyndaky 3-nji hünär-tehniki okuw mekdebi,1,68,49,6,8,5,,35,30,3,31,37,2,2,,,,,,,,,,,1,,,,1,,,,,,,,,,,,,1,,,,1,,
+26,,Şabat etrap häkimliginiň garamagyndaky 4-nji hünär-tehniki okuw mekdebi,1,41,23,6,8,4,0,26,12,3,12,29,8,4,1,1,1,1,,1,,,,,1,,,,1,,1,,1,1,1,,1,,,,,,,,,,,
+27,,“Türkmenpagta”döwlet konserniniň “Daşoguzpagta” önümçilik birleşiginiň Akdepe etrabyndaky  hünär-tehniki okuw mekdebi,1,24,13,6,4,1,0,12,9,3,5,19,8,8,1,1,1,1,,1,,,,,,,,,1,1,1,1,1,1,1,,1,,,,,,,,,1,1,1
+28,,Görogly etrap  häkimliginiň garamagyndaky 5-nji hünär-tehniki okuw mekdebi,1,29,22,5,,2,,12,15,2,2,27,8,1,1,1,1,1,,1,,,,,1,,,,1,,1,,,,,,1,,,,,,,,,,,
+29,,Köneürgenç etrap  häkimliginiň garamagyndaky 6-njy hünär-tehniki okuw mekdebi,1,27,14,6,2,5,3,11,8,5,20,7,2,2,,,,,,,,,,,1,,,,1,,,,,,,,,,,,,1,,,,1,,
+30,,”Türkmenobahyzmat” döwlet birleşiginiň “Daşoguzobahyzmat” önümçilik birleşiginiň Daşoguz şäherindäki hünär-tehniki okuw mekdebi,1,25,18,5,0,2,0,5,18,2,6,19,8,8,1,1,1,1,,1,,,,,1,,,,1,,1,1,1,1,1,,1,,,,,1,,,,1,,1
+31,,Akdepe etrap häkimliginiň 7-nji hünär-tehniki okuw mekdebi,1,32,20,5,2,5,,18,14,,4,28,8,8,1,1,1,1,,1,,,,,1,,,,1,,1,1,1,1,1,,1,,,,,1,,,,1,,1
+32,,Saparmyrat Türkmenbaşy etrap  häkimliginiň 8-nji hünär-tehniki okuw mekdebi,1,57,42,3,5,7,,28,28,1,18,39,2,2,,,,,,,,,,,1,,,,1,,,,,,,,,,,,,1,,,,1,,
+33,,Boldumsaz etrap  häkimliginiň garamagyndaky 9-njy  hünär-tehniki okuw mekdebi,1,29,17,5,2,5,4,12,7,6,21,8,5,3,1,,1,1,,1,,,,,1,,,,,,,,,3,,,,,,,,,,,,,,
+34,,Türkmenistanyň Energetika ministrliginiň Mary şäherindäki hünär-tehniki okuw mekdebi,1,25,8,11,3,3,3,5,14,3,14,11,8,8,1,1,1,1,,1,,,,,1,,,,1,,1,1,1,1,1,,1,,,,,1,,,,1,,1
+35,,Garagum etrap häkimliginiň garamagyndaky 2-nji hünär-tehniki okuw mekdebi,1,75,60,8,,7,,30,40,5,35,40,2,2,,,,,,,,,,,1,,,,1,,,,,,,,,,,,,1,,,,1,,
+36,,S.A. Nyýazow adyndaky Türkmen oba hojalyk uniwersitetiniň  Tagtabazar etrabyndaky hünär-tehniki okuw mekdebi,1,29,20,,,9,,19,10,,,29,2,2,,,,,,1,,,,,,1,,,,,,,,,,,1,,,,,,1,,,,,
+37,,Türkmenobahyzmat” döwlet birleşiginiň “Maryobahyzmat” önümçilik birleşiginiň Mary şäherindäki hünär-tehniki okuw mekdebi,1,46,42,2,,2,,24,19,3,21,25,1,1,1,,,,,,,,,,,,,,,,,1,,,,,,,,,,,,,,,,
+38,,”Türkmenobahyzmat” döwlet birleşiginiň “Maryobahyzmat” önümçilik birleşiginiň Baýramaly etrabyndaky hünär-tehniki okuw mekdebi,1,32,23,9,,,,22,9,1,26,6,1,1,1,,,,,,,,,,,,,,,,,1,,,,,,,,,,,,,,,,
+39,,Mary welaýatynyň häkimliginiň Sakarçäge etrabyndaky hünär-tehniki okuw mekdebi,1,161,149,9,0,3,0,144,14,3,26,135,3,3,1,,,1,,1,,,,,,,,,,,,1,,,1,,1,,,,,,,,,,,
+40,,Mary welaýatynyň häkimliginiň Mary etrabyndaky hünär-tehniki okuw mekdebi,1,41,30,,,11,,30,11,,12,29,4,4,1,1,,,,1,,,,,,1,,,,,,1,1,,,,1,,,,,1,,,,,,
+41,,Mary welaýatynyň häkimliginiň Murgap etrabyndaky hünär-tehniki okuw mekdebi,8,268,162,6,80,20,20,32,216,0,170,98,8,8,1,1,1,1,,1,,,,,1,,,,1,,1,1,1,1,1,,1,,,,,1,,,,1,,1
+42,,Mary welaýatynyň häkimliginiň Baýramaly şäherindäki hünär-tehniki okuw mekdebi,2,9,,6,,3,,,8,1,3,6,5,1,1,1,1,1,,1,,,,,,,,,,,,1,,,,,,,,,,,,,,,,
+43,,Mary welaýatynyň häkimliginiň Ýolöten etrabyndaky hünär-tehniki okuw mekdebi,1,150,132,15,,3,,135,14,1,15,135,1,1,,,,,,1,,,,,,,,,,,,,,,,,1,,,,,,,,,,,
+44,,Türkmengala etrap häkimliginiň hünär-tehniki okuw mekdebi,1,54,47,4,,3,,47,6,1,19,35,1,1,,,,,,1,,,,,,,,,,,,,,,,,1,,,,,,,,,,,
+45,,Türkmenabat şäher häkimliginiň Türkmenistanyň Gahrymany Gurbansoltan eje adyndaky 1-nji hünär-tehniki okuw mekdebi,7,239,176,35,8,20,,130,90,19,39,200,8,9,1,1,1,1,,1,,,,,1,,,,1,,1,2,1,1,1,,1,,,,,1,,,,1,,1
+46,,Türkmenabat şäher häkimliginiň 2-nji hünär-tehniki okuw mekdebi,3,186,70,10,20,86,5,90,85,6,43,143,6,6,,1,1,1,,1,,,,,1,,,,1,,,,1,1,1,,1,,,,,1,,,,1,,
+47,,Dänew etrap häkimliginiň 1-nji hünär-tehniki okuw mekdebi,2,157,102,24,22,9,0,93,55,9,47,110,5,6,1,1,,1,1,1,,,,,,,,,,,,1,1,,1,1,1,,,,,,,,,,,1
+48,,Saýat etrap häkimliginiň 5-nji hünär-tehniki okuw mekdebi,1,47,25,8,7,7,0,25,20,2,14,33,8,1,1,1,1,1,1,1,,,,,1,,,,1,,1,,,,,,1,,,,,,,,,,,
+49,,”Türkmenobahyzmat” döwlet birleşiginiň “Lebapobahyzmat” önümçilik birleşiginiň Saýat etrabyndaky hünär-tehniki okuw mekdebi,5,90,45,8,33,7,,45,45,,36,54,8,4,1,1,1,1,,1,,,,,1,,,,1,,1,1,,1,1,,1,,,,,,,,,,,
+50,,Köýtendag etrap häkimliginiň hünär-tehniki okuw mekdebi,1,45,25,6,11,3,,20,15,10,15,30,5,3,1,1,1,1,,1,,,,,,,,,,,,1,,1,1,,,,,,,,,,,,,
+51,,Saýat etrap häkimliginiň hünär-tehniki okuw mekdebi,1,31,10,6,5,10,0,11,14,6,14,17,6,11,1,1,1,1,,1,,,,,1,,,,,,,1,1,,3,,4,,,,,2,,,,,,
+52,,Darganata etrap häkimliginiň 11-nji hünär-tehniki okuw mekdebi,1,103,84,7,8,4,8,45,48,2,42,61,5,5,1,,1,1,1,1,,,,,,,,,,,,1,,1,1,1,1,,,,,,,,,,,
+53,,Seýdiniň nebiti gaýtadan işleýän zawodynyň  15-nji hünär-tehniki okuw mekdebi,1,187,142,19,15,11,21,65,97,4,111,76,5,5,1,,1,1,1,1,,,,,,,,,,,,1,,1,1,1,1,,,,,,,,,,,
+54,,Garlyk kaliý dag-magdan toplumynyň Magdanly şäherindäki hünär-tehniki okuw mekdebi,1,123,95,10,5,13,,40,80,3,57,66,3,3,1,,,1,1,,,,,,,,,,,,,1,,,1,1,,,,,,,,,,,,
+55,,Halaç etrap häkimliginiň hünär-tehniki okuw mekdebi,1,109,62,4,36,7,,52,39,18,26,83,8,8,1,1,1,1,,1,,,,,1,,,,1,,1,1,1,1,1,,1,,,,,1,,,,1,,1
+56,,Kerki etrap häkimliginiň hünär-tehniki okuw mekdebi,1,144,91,8,28,17,,83,57,4,68,76,8,8,1,1,1,1,,1,,,,,1,,,,1,,1,1,1,1,1,,1,,,,,1,,,,1,,1
+57,,Türkmenistanyň Ministrler Kabinetiniň ýanyndaky Ulag we kommunikasiýalar agentliginiň “Türkmendemirýollary” agentliginiň Türkmenabat şäherindäki demir ýol hünär-tehniki okuw mekdebi,1,137,125,9,0,3,12,98,22,5,70,67,5,2,1,,1,1,,1,,,,1,,,,,,,,,,,,,,1,,,,,,,1,,,
+58,,Türkmenistanyň Gurluşyk we binagärlik ministrliginiň Türkmenabat gurluşyk hünär-tehniki okuw mekdebi,1,23,8,12,0,3,0,,14,9,15,8,5,3,1,1,,,,1,,,,,1,,,,1,,,,,,,,1,,,,,1,,,,1,,
+59,,Hojambaz etrap häkimliginiň  hünär-tehniki okuw mekdebi,1,26,18,3,5,0,0,18,4,4,7,19,3,1,1,1,,,,,,,,,1,,,,,,,,,,,,,,,,,1,,,,,,
