@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
+# import plotly.express as px
 
 # pip install --upgrade numpy pandas
 # number,abbr,name,number_of_meetings,number_of_participants,students,profs,parents,sectors,age(0-17),age(18-29),age(30-59),60+,female,male,number_of_topics,number_of_suggestions,topic-1,topic-2,topic-3,topic-4,topic-5,topic-6,topic-7,topic-8,topic-9,topic-10,topic-11,topic-12,topic-13,topic-14,topic-15,topic-16,topic-17,topic-1-suggestion-number,topic-2-suggestion-number,topic-3-suggestion-number,topic-4-suggestion-number,topic-5-suggestion-number,topic-6-suggestion-number,topic-7-suggestion-number,topic-8-suggestion-number,topic-9-suggestion-number,topic-10-suggestion-number,topic-11-suggestion-number,topic-12-suggestion-number,topic-13-suggestion-number,topic-14-suggestion-number,topic-15-suggestion-number,topic-16-suggestion-number,topic-17-suggestion-number
@@ -266,7 +267,7 @@ elif page == "Maglumat seljerişi":
             if distribution_type == "Histogramma":
                 st.write(f"### Histogramma - {selected_column}")
                 fig, ax = plt.subplots(figsize=(16, 10))
-                ax.hist(combined_df[selected_column], bins=10, color='red', edgecolor='black', alpha=0.7)
+                ax.hist(combined_df[selected_column], bins=10, color='#90ee90', edgecolor='black', alpha=0.7)
                 ax.set_title(f"Histogramma: {selected_column}")
                 ax.set_xlabel(selected_column)
                 ax.set_ylabel("Gaýtalanmasy")
@@ -332,10 +333,10 @@ elif page == "Maglumat seljerişi":
             # st.metric(label="Total Participants", value=total_participants)
 
             gender_totals = combined_df[['zenan', 'erkek']].sum()
-            st.write("### Jynsy")
+            st.write("### Jynsy boýunça bölünişi")
             fig, ax = plt.subplots()
             fig, ax = plt.subplots(figsize=(6, 4))  # Adjust width and height
-            ax.pie(gender_totals, labels=['ZENAN', 'ERKEK'], autopct='%1.1f%%', startangle=90)
+            ax.pie(gender_totals, labels=['Zenan', 'Erkek'], autopct='%1.1f%%', startangle=90, colors=["#f59393", "#87cefa" ])
             ax.axis('equal')
             st.pyplot(fig)
 
@@ -345,7 +346,7 @@ elif page == "Maglumat seljerişi":
             st.write("### Hünäri boýunça bölünişi")
             fig, ax = plt.subplots()
             fig, ax = plt.subplots(figsize=(6, 4))  # Adjust width and height
-            ax.pie(role_totals, labels=['talyplar', 'mugallymlar', 'ene-atalar', 'pudak_edaralar'], autopct='%1.1f%%', startangle=90)
+            ax.pie(role_totals, labels=['talyplar', 'mugallymlar', 'ene-atalar', 'pudak_edaralar'], autopct='%1.1f%%', startangle=90, colors=["#90ee90", "#87cefa", "#f59393", "#cb7bed"])
             ax.axis('equal')
             st.pyplot(fig)
         with col3:
@@ -354,7 +355,7 @@ elif page == "Maglumat seljerişi":
             st.write("### Ýaşy boýunça bölünişi")
             fig, ax = plt.subplots()
             fig, ax = plt.subplots(figsize=(6, 4))  # Adjust width and height
-            ax.pie(age_totals, labels=['ýaş(0-17)', 'ýaş(18-29)', 'ýaş(30-59)', '60+'], autopct='%1.1f%%', startangle=90)
+            ax.pie(age_totals, labels=['ýaş(0-17)', 'ýaş(18-29)', 'ýaş(30-59)', '60+'], autopct='%1.1f%%', startangle=90, colors=["#f59393", "#90ee90", "#87cefa","#cb7bed"])
             ax.axis('equal')
             st.pyplot(fig)
 
