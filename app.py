@@ -98,25 +98,25 @@ piecharts = False
 # print("Type of value:", type(value))
 
 
-st.sidebar.title("Navigasiýa")
+st.sidebar.title("Nawigasiýa")
 
 		
-page = st.sidebar.radio("Kategoriýa Saýlaň", [
-    "Umumy Gözden Geçiriş",
-    "Maglumat Analizi",
-    "Teklipler we Temalar"
+page = st.sidebar.radio("Kategoriýa saýlaň", [
+    "Umumy gözden geçiriş",
+    "Maglumat seljerişi",
+    "Teklipler we temalar"
 ])
 
 
-if page == "Umumy Gözden Geçiriş":
+if page == "Umumy gözden geçiriş":
     st.header(page_title)
 
-    st.markdown("Bu sahypa ähli ýygnalan maglumatlaryň umumy gözden geçirilmesini berýär.")
+    st.markdown("Bu sahypada umumy gözden geçirilen ähli toplanan maglumatlaryň jemi görkezilyär.")
     data_type = st.selectbox(
-        "Data Saýlaň",
-        ["YOM", "OHOM",  "HTOM", "Ählisi"] )
+        "Maglumat saýlaň",
+        ["ÝOM", "OHOM",  "HTOM", "Ählisi"] )
     
-    if data_type == "YOM":
+    if data_type == "ÝOM":
         combined_df = pd.concat([df_YOM_1])
     elif data_type == "OHOM":
         combined_df = pd.concat([df_OHOM_1])
@@ -149,12 +149,12 @@ if page == "Umumy Gözden Geçiriş":
 
     # Add content to each column
     with col1:
-        st.metric(label="## Maslahata gatnashyjylaryň jemi ", value=total_participants)
+        st.metric(label="## Maslahata gatnaşyjylaryň jemi ", value=total_participants)
     with col2:
-        st.metric(label="## Geçirilen maslahatlaryň jemi sany", value=total_meetings)
+        st.metric(label="## Geçirilen maslahatlaryň jemi", value=total_meetings)
 
     with col3:
-        st.metric(label="## Maslahatyň netijesinde hödürlenen teklipleriň jemi sany", value=total_suggestions)
+        st.metric(label="## Maslahatyň netijesinde hödürlenen teklipleriň jemi", value=total_suggestions)
 
 
     participant_percentages = [
@@ -176,13 +176,13 @@ if page == "Umumy Gözden Geçiriş":
     ]
 
     # Labels for the datasets
-    labels = ["YOM", "OHOM", "HTOM"]
+    labels = ["ÝOM", "OHOM", "HTOM"]
 
     if piecharts:
 
     # Streamlit layout
         # st.write("### Percentage Contribution of Each Dataset")
-        st.write("### Her Datasetiň Göterim Goşandysy")
+        st.write("### Her maglumat gorunuň göterim goşandy")
 
         
 
@@ -191,45 +191,43 @@ if page == "Umumy Gözden Geçiriş":
         # Add content to each column
         with col1:
             # Pie chart for participants
-            st.write("#### Maslahata gatnashyjylaryň Göterimi ")
+            st.write("#### Maslahata gatnaşyjylaryň göterimi ")
             # st.write("#### Participants Percentage")
             fig1, ax1 = plt.subplots()
-            ax1.pie(participant_percentages, labels=labels, autopct="%1.1f%%", startangle=90, colors=["red", "blue", "green"])
-            ax1.set_title("Maslahata gatnashyjylaryň Goşandy")
+            ax1.pie(participant_percentages, labels=labels, autopct="%1.1f%%", startangle=90, colors=["#90ee90", "#87cefa", "#f59393"])
+            st.write("Maslahata gatnaşyjylaryň goşandy")
             # ax1.set_title("Participants Contribution")
             ax1.axis("equal")  # Equal aspect ratio ensures the pie chart is circular.
-            st.markdown("<br>", unsafe_allow_html=True)
 
             st.pyplot(fig1)
 
         with col2:
             # st.write("#### Meetings Percentage")
-            st.write("#### Geçirilen maslahatlaryň Göterimi")
+            st.write("#### Geçirilen maslahatlaryň göterimi")
             fig2, ax2 = plt.subplots()
-            ax2.pie(meeting_percentages, labels=labels, autopct="%1.1f%%", startangle=90, colors=["red", "blue", "green"])
+            ax2.pie(meeting_percentages, labels=labels, autopct="%1.1f%%", startangle=90, colors=["#90ee90", "#87cefa", "#f59393"])
             # ax2.set_title("Meetings Contribution")
-            ax2.set_title("Geçirilen maslahatlaryň Goşandy")
+            st.write("Geçirilen maslahatlaryň goşandy")
             ax2.axis("equal")
-            st.markdown("<br>", unsafe_allow_html=True)
 
             st.pyplot(fig2)
 
         with col3:
             # st.write("#### Suggestions Percentage")
-            st.write("#### Teklipleriň Göterimi")
+            st.write("#### Teklipleriň göterimi")
             fig3, ax3 = plt.subplots()
-            ax3.pie(suggestion_percentages, labels=labels, autopct="%1.1f%%", startangle=90, colors=["red", "blue", "green"])
+            ax3.pie(suggestion_percentages, labels=labels, autopct="%1.1f%%", startangle=90, colors=["#90ee90", "#87cefa", "#f59393"])
             # ax3.set_title("Suggestions Contribution")
-            st.write(" Maslahatyň netijesinde hödürlenen teklipleriň Goşandy")
+            st.write(" Maslahatyň netijesinde hödürlenen teklipleriň goşandy")
             ax3.axis("equal")
             st.pyplot(fig3)
 
-elif page == "Maglumat Analizi":
+elif page == "Maglumat seljerişi":
     data_type = st.selectbox(
-        "Datany Saýlaň",
-        ["YOM", "OHOM",  "HTOM", "Ählisi"] )
+        "Maglumaty saýlaň",
+        ["ÝOM", "OHOM",  "HTOM", "Ählisi"] )
     
-    if data_type == "YOM":
+    if data_type == "ÝOM":
         combined_df = pd.concat([df_YOM_1])
     elif data_type == "OHOM":
         combined_df = pd.concat([df_OHOM_1])
@@ -247,16 +245,16 @@ elif page == "Maglumat Analizi":
         st.write("Bu bölümde maglumatlaryň bölünişi we umumy görnüşi görkezilýär")
 
     # Summary statistics
-        st.write("### Umumy Statistikalar")
+        st.write("### Umumy statistikalar")
         st.dataframe(combined_df.describe())
         # st.dataframe(combined_df)
 
         cols = ["ýygnaklaryň_jemi","gatnaşyjylaryň_jemi","talyplar","mugallymlar","ene-atalar","pudak_edaralar","ýaş(0-17)","ýaş(18-29)","ýaş(30-59)","60+","zenan","erkek","tema_sany","teklip_sany"]
-        selected_column = st.selectbox("Sütün Saýlaň", cols)
+        selected_column = st.selectbox("Sütün saýlaň", cols)
         distribution_type = st.selectbox(
         # "Choose a Distribution Type",
-        "Distribusiýa Görnüşini Saýla",
-        ["Histogramma", "Dykyzlyk Grafika",  "Sepme Diagramma"]
+        "Distribusiýa görnüşini saýlaň",
+        ["Histogramma", "Dykyzlyk grafika",  "Sepme diagramma"]
         )
 
         # might change here like col 1 only 
@@ -266,7 +264,7 @@ elif page == "Maglumat Analizi":
         # Add content to each column
         with col2:
             if distribution_type == "Histogramma":
-                st.write(f"### Histogramma {selected_column}")
+                st.write(f"### Histogramma - {selected_column}")
                 fig, ax = plt.subplots(figsize=(16, 10))
                 ax.hist(combined_df[selected_column], bins=10, color='red', edgecolor='black', alpha=0.7)
                 ax.set_title(f"Histogramma: {selected_column}")
@@ -276,45 +274,45 @@ elif page == "Maglumat Analizi":
                 st.pyplot(fig)
 
         # Density Plot
-            elif distribution_type == "Dykyzlyk Grafika":
-                st.write(f"### Dykyzlyk Grafika {selected_column}")
+            elif distribution_type == "Dykyzlyk grafika":
+                st.write(f"### Dykyzlyk grafika - {selected_column}")
                 fig, ax = plt.subplots(figsize=(16, 10))
                 data = combined_df[selected_column]
                 density, bins = np.histogram(data, bins=30, density=True)
                 bin_centers = 0.5 * (bins[:-1] + bins[1:])  # Calculate center of bins
                 ax.plot(bin_centers, density, color='red', linewidth=2)
                 ax.fill_between(bin_centers, density, color='red', alpha=0.3)
-                ax.set_title(f"Dykyzlyk Grafika: {selected_column}")
+                ax.set_title(f"Dykyzlyk grafika: {selected_column}")
                 ax.set_xlabel(selected_column)
                 ax.set_ylabel("Dykyzlyk")
                 ax.grid(axis='y', linestyle='--', alpha=0.7)
                 st.pyplot(fig)
 
             # Scatterplot
-            elif distribution_type == "Sepme Diagramma":
-                x_col = st.selectbox("X oky üçin Sütüni Saýlaň", cols, index=0)
-                y_col = st.selectbox("Y oky üçin Sütüni Saýlaň", cols, index=1)
-                st.write(f"### Sepme Diagramma: {x_col} we {y_col}")
+            elif distribution_type == "Sepme diagramma":
+                x_col = st.selectbox("X oky üçin sütüni saýlaň", cols, index=0)
+                y_col = st.selectbox("Y oky üçin sütüni saýlaň", cols, index=1)
+                st.write(f"### Sepme siagramma: {x_col} - {y_col}")
                 fig, ax = plt.subplots(figsize=(10, 6))
                 scatter = ax.scatter(
                     combined_df[x_col], combined_df[y_col],
                     c=combined_df[selected_column], cmap='cool', edgecolor='black', alpha=0.7
                 )
-                ax.set_title(f"Sepme Diagramma: {x_col} we {y_col}")
+                ax.set_title(f"Sepme siagramma: {x_col} we {y_col}")
                 ax.set_xlabel(x_col)
                 ax.set_ylabel(y_col)
                 fig.colorbar(scatter, label=selected_column)
                 ax.grid(linestyle='--', alpha=0.7)
                 st.pyplot(fig)
 
-    with st.expander("Bap : Gatnaşyjylaryň analizi"):
+    with st.expander("Bap: Gatnaşyjylaryň seljermesi"):
         col1, col2 = st.columns(2)
         with col1:
             # Participants by Role
             roles = ['talyplar', 'mugallymlar', 'ene-atalar', 'pudak_edaralar']
             role_totals = combined_df[roles].sum()
             # st.write("### Total Participants by Role")
-            st.write("### Hünär boýunça gatnaşyjylar")
+            st.write("### Hünäri boýunça gatnaşyjylar")
             st.bar_chart(role_totals)
 
         with col2:
@@ -322,7 +320,7 @@ elif page == "Maglumat Analizi":
             age_groups = ['ýaş(0-17)', 'ýaş(18-29)', 'ýaş(30-59)', '60+']
             age_totals = combined_df[age_groups].replace('­', 0).replace('-', 0).astype(int).sum()
             # st.write("### Total Participants by Age Group")
-            st.write("### Ýaş boýunça gatnaşyjylar")
+            st.write("### Ýaşy boýunça gatnaşyjylar")
 
             st.bar_chart(age_totals)
 
@@ -334,7 +332,7 @@ elif page == "Maglumat Analizi":
             # st.metric(label="Total Participants", value=total_participants)
 
             gender_totals = combined_df[['zenan', 'erkek']].sum()
-            st.write("### Jyns Boýunça Bölünişi")
+            st.write("### Jynsy")
             fig, ax = plt.subplots()
             fig, ax = plt.subplots(figsize=(6, 4))  # Adjust width and height
             ax.pie(gender_totals, labels=['ZENAN', 'ERKEK'], autopct='%1.1f%%', startangle=90)
@@ -344,7 +342,7 @@ elif page == "Maglumat Analizi":
         with col2:
             # st.metric(label="Total Participants", value=total_participants)
             role_totals = combined_df[['talyplar', 'mugallymlar', 'ene-atalar', 'pudak_edaralar']].sum()
-            st.write("### Hünär Boýunça Bölünişi")
+            st.write("### Hünäri boýunça bölünişi")
             fig, ax = plt.subplots()
             fig, ax = plt.subplots(figsize=(6, 4))  # Adjust width and height
             ax.pie(role_totals, labels=['talyplar', 'mugallymlar', 'ene-atalar', 'pudak_edaralar'], autopct='%1.1f%%', startangle=90)
@@ -353,7 +351,7 @@ elif page == "Maglumat Analizi":
         with col3:
             # st.metric(label="Total Participants", value=total_participants)
             age_totals = combined_df[['ýaş(0-17)', 'ýaş(18-29)', 'ýaş(30-59)', '60+']].sum()
-            st.write("### Ýaş Boýunça Bölünişi")
+            st.write("### Ýaşy boýunça bölünişi")
             fig, ax = plt.subplots()
             fig, ax = plt.subplots(figsize=(6, 4))  # Adjust width and height
             ax.pie(age_totals, labels=['ýaş(0-17)', 'ýaş(18-29)', 'ýaş(30-59)', '60+'], autopct='%1.1f%%', startangle=90)
@@ -361,18 +359,18 @@ elif page == "Maglumat Analizi":
             st.pyplot(fig)
 
 
-    with st.expander("Bap: Aşaky we Ýokarky Analiz"):
-        selected_column = st.selectbox("Reýtinglemek Üçin Sütüni Saýlaň", ["ýygnaklaryň_jemi","gatnaşyjylaryň_jemi","talyplar","mugallymlar","ene-atalar","pudak_edaralar","ýaş(0-17)","ýaş(18-29)","ýaş(30-59)","60+","zenan","erkek","tema_sany","teklip_sany"])
+    with st.expander("Bap: Aşaky we ýokarky seljerişi"):
+        selected_column = st.selectbox("Reýting üçin sütüni saýlaň", ["ýygnaklaryň_jemi","gatnaşyjylaryň_jemi","talyplar","mugallymlar","ene-atalar","pudak_edaralar","ýaş(0-17)","ýaş(18-29)","ýaş(30-59)","60+","zenan","erkek","tema_sany","teklip_sany"])
 
     # Get the Top 5 based on the selected column
         top_5 = combined_df.nlargest(5, selected_column)[["ady", selected_column]]
         col1, col2 = st.columns(2)
         with col1:
             # Plotting
-            st.write(f"### Iň Ýokarky 5 {selected_column.capitalize()} boýunça")
+            st.write(f"### {selected_column.capitalize()} boýunça ýokarky görkezijiler ")
             fig, ax = plt.subplots(figsize=(10, 6))
             ax.bar(top_5["ady"], top_5[selected_column])
-            ax.set_title(f"Iň Ýokarky 5 {selected_column.capitalize()} boýunça")
+            ax.set_title(f"{selected_column.capitalize()} boýunça ýokarky görkezijiler ")
             ax.set_ylabel(selected_column.capitalize())
             ax.set_xlabel("Ady")
             ax.set_xticklabels(top_5["ady"], rotation=45, ha="right")
@@ -381,16 +379,16 @@ elif page == "Maglumat Analizi":
         # Get Bottom 5 based on the selected column
             bottom_5 = combined_df.nsmallest(5, selected_column)[["ady", selected_column]]
             # Plotting
-            st.write(f"### Iň Aşaky 5 {selected_column.capitalize()} boýunça")
+            st.write(f"### {selected_column.capitalize()} boýunça pes görkezijiler")
             fig, ax = plt.subplots(figsize=(10, 6))
             ax.bar(bottom_5["ady"], bottom_5[selected_column], color="orange")  # Use a different color for distinction
-            ax.set_title(f"Iň Aşaky 5 {selected_column.capitalize()} boýunça")
+            ax.set_title(f"{selected_column.capitalize()} boýunça pes görkezijiler")
             ax.set_ylabel(selected_column.capitalize())
             ax.set_xlabel("Ady")
             ax.set_xticklabels(bottom_5["ady"], rotation=45, ha="right")
             st.pyplot(fig)
 
-    with st.expander("Bap: Tema Analiz"):
+    with st.expander("Bap: Tema seljerişi"):
         
         topics = ["tema-1", "tema-2", "tema-3", "tema-4", "tema-5", "tema-6", "tema-7", "tema-8", 
           "tema-9", "tema-10", "tema-11", "tema-12", "tema-13", "tema-14", "tema-15", 
@@ -416,7 +414,7 @@ elif page == "Maglumat Analizi":
         
         data_layers = [layer1, layer2]
         colors = ["blue", "orange"]
-        labels = ["näçe gezek ara alnyp maslahatlaşyldy", "teklipleriň sany"]
+        labels = ["ara alyp maslahatlaşmalaryň sany", "teklipleriň sany"]
 
         # print(layer1)
         # print(layer2)
@@ -444,7 +442,7 @@ elif page == "Maglumat Analizi":
 
         # Title and Legend
         # ax.set_title("Topic Discussions and Suggestions Analysis", va='bottom', fontsize=14)
-        ax.set_title("Tema Maslahatlaşmalar we Teklipler Analizi", va='bottom', fontsize=14)
+        ax.set_title("Temalar boýunça ara alyp maslahatlaşmalar we teklipler seljermesi", va='bottom', fontsize=14)
     
         ax.legend(loc="upper right", bbox_to_anchor=(1.2, 1.1))
 
@@ -508,7 +506,7 @@ elif page == "Maglumat Analizi":
         # print(combined_df.dtypes)
 
 
-elif page == "Teklipler we Temalar":
+elif page == "Teklipler we temalar":
     # number,abbr,ady,teklip_sany,tema-1-teklip,tema-2-teklip,tema-3-teklip,tema-4-teklip,tema-5-teklip,tema-6-teklip,tema-7-teklip,tema-8-teklip,tema-9-teklip,tema-10-teklip,tema-11-teklip,tema-12-teklip,tema-13-teklip,tema-14-teklip,tema-15-teklip,tema-16-teklip,tema-17-teklip
     # number,abbr,name,total_suggestion,topic-1-suggestions,topic-2-suggestions,topic-3-suggestions,topic-4-suggestions,topic-5-suggestions,topic-6-suggestions,topic-7-suggestions,topic-8-suggestions,topic-9-suggestions,topic-10-suggestions,topic-11-suggestions,topic-12-suggestions,topic-13-suggestions,topic-14-suggestions,topic-15-suggestions,topic-16-suggestions,topic-17-suggestions
 
@@ -518,10 +516,10 @@ elif page == "Teklipler we Temalar":
     df_HTOM_S = pd.read_csv('FINAL_HTOM.csv')
     
     data_type = st.selectbox(
-        "Data Saýlaň",
-        ["YOM", "OHOM",  "HTOM", "Ählisi"] )
+        "Maglumat saýlaň",
+        ["ÝOM", "OHOM",  "HTOM", "Ählisi"] )
     
-    if data_type == "YOM":
+    if data_type == "ÝOM":
         combined_df = pd.concat([df_YOM_S])
     elif data_type == "OHOM":
         combined_df = pd.concat([df_OHOM_S])
@@ -537,7 +535,7 @@ elif page == "Teklipler we Temalar":
     # st.dataframe(combined_df)
 
     options = st.multiselect(
-        "Tema Saýlaň", topics)
+        "Tema saýlaň", topics)
     topics_selected = []
 
     if options:
@@ -588,9 +586,9 @@ elif page == "Teklipler we Temalar":
     # print("SUGGESTION LIST")          
     # print(suggestions_list)
     if flagAll:
-        st.metric(label="## Saýlanan Teklipleriň Jemi Sany", value=count)
+        st.metric(label="## Saýlanan teklipleriň jemi sany", value=count)
     else:
-        st.metric(label="## Saýlanan Teklipleriň Jemi Sany", value=countI)
+        st.metric(label="## Saýlanan teklipleriň jemi sany", value=countI)
 
     
     st.code("\n".join(suggestions_list), language="plaintext")
