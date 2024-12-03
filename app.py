@@ -293,13 +293,13 @@ elif page == "Maglumat seljerişi":
             elif distribution_type == "Sepme diagramma":
                 x_col = st.selectbox("X oky üçin sütüni saýlaň", cols, index=0)
                 y_col = st.selectbox("Y oky üçin sütüni saýlaň", cols, index=1)
-                st.write(f"### Sepme siagramma: {x_col} - {y_col}")
+                st.write(f"### Sepme diagramma: {x_col} - {y_col}")
                 fig, ax = plt.subplots(figsize=(10, 6))
                 scatter = ax.scatter(
                     combined_df[x_col], combined_df[y_col],
                     c=combined_df[selected_column], cmap='cool', edgecolor='black', alpha=0.7
                 )
-                ax.set_title(f"Sepme siagramma: {x_col} we {y_col}")
+                ax.set_title(f"Sepme diagramma: {x_col} we {y_col}")
                 ax.set_xlabel(x_col)
                 ax.set_ylabel(y_col)
                 fig.colorbar(scatter, label=selected_column)
