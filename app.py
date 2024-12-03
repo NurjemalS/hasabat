@@ -364,7 +364,7 @@ elif page == "Maglumat seljerişi":
             st.write("### Ýaşy boýunça bölünişi")
             fig, ax = plt.subplots()
             fig, ax = plt.subplots(figsize=(6, 4))  # Adjust width and height
-            ax.pie(age_totals, labels=['ýaş(0-17)', 'ýaş(18-29)', 'ýaş(30-59)', '60+'], autopct='%1.1f%%', startangle=90, colors=["#f59393", "#90ee90", "#87cefa","#cb7bed"])
+            ax.pie(age_totals, labels=['ýaş(0-17)', 'ýaş(18-29)', 'ýaş(30-59)', '60+'], autopct='%1.1f%%', startangle=90, colors=["#f59393", "#90ee90", "#87cefa","#cb7bed"], pctdistance=1.6,labeldistance=1.1)
             ax.axis('equal')
             st.pyplot(fig)
 
