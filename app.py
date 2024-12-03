@@ -307,8 +307,17 @@ elif page == "Maglumat seljerişi":
                 st.pyplot(fig)
 
     with st.expander("Bap: Gatnaşyjylaryň seljermesi"):
-        col1, col2 = st.columns(2)
+        col1, col2, col3 = st.columns(3)
+
         with col1:
+            # Participants by Age Group
+            gender_groups = ['zenan', 'erkek']
+            gender_totals = combined_df[gender_groups].replace('­', 0).replace('-', 0).astype(int).sum()
+            # st.write("### Total Participants by Age Group")
+            st.write("### Jynsy boýunça gatnaşyjylar")
+
+            st.bar_chart(gender_totals)
+        with col2:
             # Participants by Role
             roles = ['talyplar', 'mugallymlar', 'ene-atalar', 'pudak_edaralar']
             role_totals = combined_df[roles].sum()
@@ -316,7 +325,7 @@ elif page == "Maglumat seljerişi":
             st.write("### Hünäri boýunça gatnaşyjylar")
             st.bar_chart(role_totals)
 
-        with col2:
+        with col3:
             # Participants by Age Group
             age_groups = ['ýaş(0-17)', 'ýaş(18-29)', 'ýaş(30-59)', '60+']
             age_totals = combined_df[age_groups].replace('­', 0).replace('-', 0).astype(int).sum()
