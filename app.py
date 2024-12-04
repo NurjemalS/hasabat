@@ -27,7 +27,7 @@ topics = ["1. Gahryman Arkadagymyzyň öňe süren teklibine laýyklykda geçiri
     "14. Arkadag şäheriniň dünýäniň ylym-bilim merkezi hökmündäki ornuny pugtalandyryp, şäherde Türkmenistanyň gadymy, orta asyrlar, täze we iň täze taryhyny, arheologik, binagärlik ýadygärliklerini, döwletimiziň alyp barýan syýasatyny öwrenýän hem-de wagyz edýän halkara ylmy-barlag merkezini döretmek",
     "15. Ýokary bilimi ösdürmegiň Strategiýasyny taýýarlamak",
     "16. Intellektual eýeçilik ulgamyny ösdürmegiň Konsepsiýasyny taýýarlamak",
-    "17. Maslahatlaryň jemleýji maslahaty (Beylekiler)"]
+    "17. Maslahatlaryň jemleýji maslahaty (Beylekiler)", "18. Ählisi"]
 
 # Create a dictionary with topics as keys and ordered numbers as values
 topics_map = {topic: idx + 1 for idx, topic in enumerate(topics)}
@@ -246,8 +246,8 @@ elif page == "Maglumat seljerişi":
         st.write("Bu bölümde maglumatlaryň bölünişi we umumy görnüşi görkezilýär")
 
     # Summary statistics
-        st.write("### Umumy statistikalar")
-        st.dataframe(combined_df.describe())
+        # st.write("### Umumy statistikalar")
+        # st.dataframe(combined_df.describe())
         # st.dataframe(combined_df)
 
         cols = ["ýygnaklaryň_jemi","gatnaşyjylaryň_jemi","talyplar","mugallymlar","ene-atalar","pudak_edaralar","ýaş(0-17)","ýaş(18-29)","ýaş(30-59)","60+","zenan","erkek","tema_sany","teklip_sany"]
@@ -367,6 +367,44 @@ elif page == "Maglumat seljerişi":
             ax.pie(age_totals, labels=['ýaş(0-17)', 'ýaş(18-29)', 'ýaş(30-59)', '60+'], autopct='%1.1f%%', startangle=90, colors=["#f59393", "#90ee90", "#87cefa","#cb7bed"], pctdistance=1.6,labeldistance=1.1)
             ax.axis('equal')
             st.pyplot(fig)
+
+             # analysis by name 
+            # Select universities dynamically
+        st.write(" ### Her pudak edara boyunça gatnaşyk seljerişi")
+        selected_universities = st.multiselect(
+                    "Edara saylaň ", 
+                    combined_df["ady"].unique(), 
+                    default=combined_df["ady"][0]
+            )
+        col1, col2, col3 = st.columns(3)
+
+        with col1:
+            st.write("### Edara boýunça jynsy boýunça gatnaşyjylar ")
+                # Filter data for selected universities
+            filtered_data = combined_df[combined_df["ady"].isin(selected_universities)]
+            gender_totals = filtered_data[['zenan', 'erkek']].sum()
+                # sorted_suggestions = suggestions_totals.sort_values(ascending=True)
+            st.bar_chart(gender_totals)
+            st.write()
+        with col2:
+            st.write("### Edara boýunça hünäri boýunça gatnaşyjylar")
+
+                # Filter data for selected universities
+            filtered_data = combined_df[combined_df["ady"].isin(selected_universities)]
+            job_totals = filtered_data[['talyplar', 'mugallymlar', 'ene-atalar', 'pudak_edaralar']].sum()
+                # sorted_suggestions = suggestions_totals.sort_values(ascending=True)
+            st.bar_chart(job_totals)
+    
+        with col3:
+            st.write(" ### Edara boýunça ýaşy boýunça gatnaşyjylar")
+         
+                # Filter data for selected universities
+            filtered_data = combined_df[combined_df["ady"].isin(selected_universities)]
+            age_totals = filtered_data[['ýaş(0-17)', 'ýaş(18-29)', 'ýaş(30-59)', '60+']].sum()
+                # sorted_suggestions = suggestions_totals.sort_values(ascending=True)
+            st.bar_chart(age_totals)
+            st.write()
+
 
 
     with st.expander("Bap: Aşaky we ýokarky seljerişi"):
@@ -502,7 +540,7 @@ elif page == "Maglumat seljerişi":
         st.pyplot(fig)
 
               
-            # Participants by Role
+        # Participants by Role
         # roles = ['students', 'profs', 'parents', 'sectors']
         suggestions_per_topic_numbers = ["tema-1-teklip-sany", "tema-2-teklip-sany", "tema-3-teklip-sany", "tema-4-teklip-sany", "tema-5-teklip-sany", "tema-6-teklip-sany", "tema-7-teklip-sany", "tema-8-teklip-sany", 
           "tema-9-teklip-sany", "tema-10-teklip-sany", "tema-11-teklip-sany", "tema-12-teklip-sany", "tema-13-teklip-sany", "tema-14-teklip-sany", "tema-15-teklip-sany", 
@@ -515,10 +553,35 @@ elif page == "Maglumat seljerişi":
 
         # print(combined_df.dtypes)
 
+        # analysis by name 
+        # Select universities dynamically
+        st.header("Her edara boyunça teklipleriň sany ")
+        selected_universities = st.multiselect(
+            "Edara saylaň", 
+            combined_df["ady"].unique(), 
+            default=combined_df["ady"][0]
+        )
+        
+        # Filter data for selected universities
+    
+
+        filtered_data = combined_df[combined_df["ady"].isin(selected_universities)]
+        suggestions_totals = filtered_data[suggestions_per_topic_numbers].sum()
+        # sorted_suggestions = suggestions_totals.sort_values(ascending=True)
+        st.bar_chart(suggestions_totals)
+        
+        # Plot bar chart for total suggestions
+        # st.bar_chart(filtered_data.set_index("ady")["Total Suggestions"])
+        
 
 elif page == "Teklipler we temalar":
     # number,abbr,ady,teklip_sany,tema-1-teklip,tema-2-teklip,tema-3-teklip,tema-4-teklip,tema-5-teklip,tema-6-teklip,tema-7-teklip,tema-8-teklip,tema-9-teklip,tema-10-teklip,tema-11-teklip,tema-12-teklip,tema-13-teklip,tema-14-teklip,tema-15-teklip,tema-16-teklip,tema-17-teklip
     # number,abbr,name,total_suggestion,topic-1-suggestions,topic-2-suggestions,topic-3-suggestions,topic-4-suggestions,topic-5-suggestions,topic-6-suggestions,topic-7-suggestions,topic-8-suggestions,topic-9-suggestions,topic-10-suggestions,topic-11-suggestions,topic-12-suggestions,topic-13-suggestions,topic-14-suggestions,topic-15-suggestions,topic-16-suggestions,topic-17-suggestions
+   
+
+    suggestions_all = ["tema-1-teklip", "tema-2-teklip", "tema-3-teklip", "tema-4-teklip", "tema-5-teklip", "tema-6-teklip", "tema-7-teklip", "tema-8-teklip", 
+          "tema-9-teklip", "tema-10-teklip", "tema-11-teklip", "tema-12-teklip", "tema-13-teklip", "tema-14-teklip", "tema-15-teklip", 
+          "tema-16-teklip", "tema-17-teklip"]
 
     flagAll = False
     df_YOM_S = pd.read_csv('FINAL_YOM.csv')
@@ -552,6 +615,7 @@ elif page == "Teklipler we temalar":
         for value in options:
             topics_selected.append('tema-' + str(topics_map[value]))
     
+    # st.write(topics_selected)
     # st.write(options)
     # st.dataframe(combined_df)
 
@@ -559,18 +623,21 @@ elif page == "Teklipler we temalar":
     # print these columns of suggestions
     topics_selected_suggestions = []
     for i in range(len(topics_selected)):
-        topics_selected_suggestions.append(topics_selected[i] + "-teklip")
+        if topics_selected[i] == "tema-18":
+            topics_selected_suggestions = suggestions_all
+        else:
+            topics_selected_suggestions.append(topics_selected[i] + "-teklip")
+    # st.write(topics_selected_suggestions)
     
-
 
     suggestions_list = []
     count = 0
-    print(combined_df[topics_selected_suggestions])
+    # print(combined_df[topics_selected_suggestions])
 
     suggestions_list_map = combined_df[topics_selected_suggestions].to_dict()
     print("SUGGESTION MAP")          
 
-    print(suggestions_list_map)
+    # print(suggestions_list_map)
 
     if not flagAll:
         countI = 0
@@ -587,7 +654,7 @@ elif page == "Teklipler we temalar":
                 if row[k] != "YOK" and row[k] != '-':
                     count += 1
                     suggestions_list.append(row[k])
-                    print(row[k])
+                    # print(row[k])
 
     # print(len(suggestions_list))
     # print("COUNT")
