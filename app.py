@@ -2,6 +2,8 @@ import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
+from collections import defaultdict
+
 # import plotly.express as px
 
 # pip install --upgrade numpy pandas
@@ -105,7 +107,8 @@ st.sidebar.title("Nawigasiýa")
 page = st.sidebar.radio("Kategoriýa saýlaň", [
     "Umumy gözden geçiriş",
     "Maglumat seljerişi",
-    "Teklipler we temalar"
+    "Teklipler we temalar",
+    "Teklipler gory"
 ])
 
 
@@ -668,7 +671,7 @@ elif page == "Teklipler we temalar":
         st.metric(label="## Saýlanan teklipleriň jemi sany", value=countI)
 
     
-    st.code("\n".join(suggestions_list), language="plaintext")
+    st.code("\n\n\n".join(suggestions_list), language="plaintext")
 
 
     # choose data set:
@@ -684,4 +687,106 @@ elif page == "Teklipler we temalar":
 # df.columns = ['number', 'abbr', 'name', 'number_of_suggestions', '1-topic-number', '1-topic-suggestion', '2-topic-number', '2-topic-suggestion', '3-topic-number', '3-topic-suggestion', '4-topic-number', '4-topic-suggestion', '5-topic-number', '5-topic-suggestion', '6-topic-number', '6-topic-suggestion', '7-topic-number', '7-topic-suggestion', '8-topic-number', '8-topic-suggestion', '9-topic-number', '9-topic-suggestion', '10-topic-number', '10-topic-suggestion', '11-topic-number', '11-topic-suggestion', '12-topic-number', '12-topic-suggestion', '13-topic-number', '13-topic-suggestion', '14-topic-number', '14-topic-suggestion', '15-topic-number', '15-topic-suggestion', '16-topic-number', '16-topic-suggestion', '17-topic-number', '17-topic-suggestion']
 # print(df.head()) 
 # data type icinde filterleme 
+
+elif page == "Teklipler gory":
+
+    df_YOM_GOR = pd.read_csv('ÝOM_GOR.csv')
+    df_OHOM_GOR = pd.read_csv('OHOM_GOR.csv')
+
+    
+    data_type = st.selectbox(
+        "Maglumat saýlaň",
+        ["ÝOM", "OHOM", "Ählisi"])
+    
+    if data_type == "ÝOM":
+        data = pd.concat([ df_YOM_GOR])
+    elif data_type == "OHOM":
+        data = pd.concat([df_OHOM_GOR])
+    else:
+        data = pd.concat([df_YOM_GOR, df_OHOM_GOR])
+
+
+    # Define the mapping of keys to topic titles
+    topic_titles = {
+        1: "1. Gahryman Arkadagymyzyň öňe süren teklibine laýyklykda geçirilýän maslahatlary geçirmegiň ähmiýetini düzündirmek bilen bagly maslahatlar",
+        2: "2. XXI asyrda bilimiň mazmunyna we okatmagyň usulyýetine täzeçe garamak, şeýle hem bilim babatda umumy maksatlara ýetmegi çaltlandyrmak boýunça esasy strategik özgertmeleri we gurallary kesgitlemek",
+        3: "3. Bilim çygrynda milli maksatlary we görkezijileri kesgitlemek",
+        4: "4. Bilimiň döwlet tarapyndan pugtalandyrylmagyny we has durnukly maliýeleşdirilmegini üpjün etmek",
+        5: "5. Ýurdumyzda halkara derejesine laýyk gelýän umumybilim edaralaryny döretmek, mekdep-gimnaziýalary açmak",
+        6: "6. Ylmyň we tehnikanyň örän çalt depginlerde ösmegi, täze tehnologiýalaryň döremegi bilen baglylykda, bilim edaralarynda okatmagyň usulyýetini kämilleşdirmek",
+        7: "7. Arkadag şäheriniň bilim edaralaryny ÝUNESKO-nyň assosirlenen mekdepler toruna girizmek boýunça zerur işleri alyp barmak",
+        8: "8. Ýurdumyzda döwrebap bilim edaralaryny gurup, ylmyň we innowasiýalaryň ileri tutulýan ugurlary boýunça tehnologiýalar merkezlerini döretmek",
+        9: "9. Dünýäniň öňdebaryjy uniwersitetleriniň sanawyna girýän bilelikdäki ýokary okuw mekdeplerini ýa-da olaryň şahamçalaryny döretmek",
+        10: "10. Mekdebe çenli çagalar edaralarynyň hem-de umumybilim berýän orta mekdepleriň sanyny artdyrmak",
+        11: "11. Ýokary okuw mekdeplerinde ylym-bilim-önümçilik arabaglanyşygynyň kämil usulyny döretmek",
+        12: "12. Ýaş nesilleri milli gymmatlyklarymyza, däp-dessurlarymyza buýsanç ruhunda, ynsanperwer kadalarymyz esasynda terbiýelemek üçin meşhur şahsyýetlerimiziň ýadygärliklerini ebedileşdirmek",
+        13: "13. Müňýyllyklardan gözbaş alýan medeniýetimizi, edebiýatymyzy, şöhratly taryhymyzy täze nazaryýet esasynda düýpli öwrenmek hem-de ylmy taýdan beýan etmek",
+        14: "14. Arkadag şäheriniň dünýäniň ylym-bilim merkezi hökmündäki ornuny pugtalandyryp, şäherde Türkmenistanyň gadymy, orta asyrlar, täze we iň täze taryhyny, arheologik, binagärlik ýadygärliklerini, döwletimiziň alyp barýan syýasatyny öwrenýän hem-de wagyz edýän halkara ylmy-barlag merkezini döretmek",
+        15: "15. Ýokary bilimi ösdürmegiň Strategiýasyny taýýarlamak",
+        16: "16. Intellektual eýeçilik ulgamyny ösdürmegiň Konsepsiýasyny taýýarlamak",
+        17: "17. Maslahatlaryň jemleýji maslahaty (Beylekiler)"
+    }
+
+    # Convert data into the nested dictionary format with topic titles
+    nested_dict = defaultdict(lambda: defaultdict(list))
+
+
+    for _, row in data.iterrows():
+        university = row['name']
+        tema_sany = topic_titles.get(row['tema-sany'], f"Unknown Topic {row['tema-sany']}")
+        teklip = row['teklipler']
+        nested_dict[university][tema_sany].append(teklip)
+    
+
+    st.title("Ähli teklipleriň gory")
+
+    # "Select All" option for universities
+    universities = ["Ählisi"] + list(nested_dict.keys())
+    selected_university = st.selectbox("Edara saýlaň", universities)
+
+    # Handle university selection
+    if selected_university == "Ählisi":
+        selected_data = nested_dict
+    else:
+        selected_data = {selected_university: nested_dict[selected_university]}
+
+    # "Select All" option for topics
+    if selected_university != "All":
+        topics = ["Ählisi"] + list(nested_dict[selected_university].keys())
+    else:
+        topics = ["Ählisi"] + list(set(topic for uni in nested_dict.values() for topic in uni.keys()))
+    
+    selected_topic = st.selectbox("Tema saýlaň", topics)
+
+    # Calculate total proposals
+    total_proposals = 0
+    if selected_topic == "Ählisi":
+        for topics_dict in selected_data.values():
+            for proposals in topics_dict.values():
+                total_proposals += len(proposals)
+    else:
+        for topics_dict in selected_data.values():
+            if selected_topic in topics_dict:
+                total_proposals += len(topics_dict[selected_topic])
+
+    # Display the metric
+    st.metric(label="## Ähli teklipleriň jemi sany", value=total_proposals)
+
+    # Display the proposals
+    st.write("### Teklipler")
+    if selected_topic == "Ählisi":
+        for uni, topics_dict in selected_data.items():
+            st.write(f"**{uni}**")
+            for topic, proposals in topics_dict.items():
+                st.write(f"- **{topic}**")
+                for proposal in proposals:
+                    st.write(f"{proposal}")
+    else:
+        for uni, topics_dict in selected_data.items():
+            if selected_topic in topics_dict:
+                st.write(f"**{selected_topic}**")
+                for proposal in topics_dict[selected_topic]:
+                    st.write(f"{proposal}")
+
+
 
