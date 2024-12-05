@@ -692,18 +692,23 @@ elif page == "Teklipler gory":
 
     df_YOM_GOR = pd.read_csv('ÝOM_GOR.csv')
     df_OHOM_GOR = pd.read_csv('OHOM_GOR.csv')
+    df_HTOM_GOR = pd.read_csv('HTOM_GOR.csv')
+  
+
 
     
     data_type = st.selectbox(
         "Maglumat saýlaň",
-        ["ÝOM", "OHOM", "Ählisi"])
+        ["ÝOM", "OHOM", "HTOM", "Ählisi"])
     
     if data_type == "ÝOM":
         data = pd.concat([ df_YOM_GOR])
     elif data_type == "OHOM":
         data = pd.concat([df_OHOM_GOR])
+    elif data_type == "HTOM":
+        data = pd.concat([df_HTOM_GOR])
     else:
-        data = pd.concat([df_YOM_GOR, df_OHOM_GOR])
+        data = pd.concat([df_YOM_GOR, df_OHOM_GOR, df_HTOM_GOR])
 
 
     # Define the mapping of keys to topic titles
