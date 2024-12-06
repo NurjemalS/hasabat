@@ -249,8 +249,8 @@ elif page == "Maglumat seljerişi":
         st.write("Bu bölümde maglumatlaryň bölünişi we umumy görnüşi görkezilýär")
 
     # Summary statistics
-        # st.write("### Umumy statistikalar")
-        # st.dataframe(combined_df.describe())
+        st.write("### Umumy statistikalar")
+        st.dataframe(combined_df.describe())
         # st.dataframe(combined_df)
 
         cols = ["ýygnaklaryň_jemi","gatnaşyjylaryň_jemi","talyplar","mugallymlar","ene-atalar","pudak_edaralar","ýaş(0-17)","ýaş(18-29)","ýaş(30-59)","60+","zenan","erkek","tema_sany","teklip_sany"]
@@ -493,7 +493,8 @@ elif page == "Maglumat seljerişi":
 
         # Title and Legend
         # ax.set_title("Topic Discussions and Suggestions Analysis", va='bottom', fontsize=14)
-        ax.set_title("Temalar boýunça ara alyp maslahatlaşmalar we teklipler seljermesi", va='bottom', fontsize=14)
+        ax.set_title("Ara alyp maslahatlaşmalar we teklipler", va='bottom', fontsize=14)
+        # st.write(" we teklipler seljermesi")
     
         ax.legend(loc="upper right", bbox_to_anchor=(1.2, 1.1))
 
@@ -793,3 +794,19 @@ elif page == "Teklipler gory":
 
 
 
+#  Umumy gözden geçiriş -> 3
+# Bölüniş -> 41 * 4 fine = 164
+# Gatnaşyjylaryň seljermesi -> 6 * 4 + (21*3 + 45*3 + 59*3) = 399
+# Aşaky we ýokarky seljerişi -> 28*4 fine = 112
+# Tema seljerişi ->  3 * 4 + (21 + 45 + 59) = 137
+# JEMI 815 graph
+
+# gatnashdy -> grafikasyny gorkezmeli 
+# maslahatlashyldy -> tema grafikalar 
+# haysy temalara uns berildi -> 
+# temalar boyunca teklipler 18% 11 nji temadan 
+# gecririlen maslahatlaryn we teklip sany gatnashygy(proportion) 
+# artykmaclygy nadip gormeli 
+
+
+# maslahatlasmalar totoal 
