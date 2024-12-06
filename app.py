@@ -107,7 +107,7 @@ st.sidebar.title("Nawigasiýa")
 page = st.sidebar.radio("Kategoriýa saýlaň", [
     "Umumy gözden geçiriş",
     "Maglumat seljerişi",
-    "Teklipler we temalar",
+    "Saýlanan teklipler",
     "Teklipler gory"
 ])
 
@@ -558,7 +558,7 @@ elif page == "Maglumat seljerişi":
 
         # analysis by name 
         # Select universities dynamically
-        st.header("Her edara boyunça teklipleriň sany ")
+        st.write("### Her edara boýunça teklipleriň sany ")
         selected_universities = st.multiselect(
             "Edara saylaň", 
             combined_df["ady"].unique(), 
@@ -577,7 +577,7 @@ elif page == "Maglumat seljerişi":
         # st.bar_chart(filtered_data.set_index("ady")["Total Suggestions"])
         
 
-elif page == "Teklipler we temalar":
+elif page == "Saýlanan teklipler":
     # number,abbr,ady,teklip_sany,tema-1-teklip,tema-2-teklip,tema-3-teklip,tema-4-teklip,tema-5-teklip,tema-6-teklip,tema-7-teklip,tema-8-teklip,tema-9-teklip,tema-10-teklip,tema-11-teklip,tema-12-teklip,tema-13-teklip,tema-14-teklip,tema-15-teklip,tema-16-teklip,tema-17-teklip
     # number,abbr,name,total_suggestion,topic-1-suggestions,topic-2-suggestions,topic-3-suggestions,topic-4-suggestions,topic-5-suggestions,topic-6-suggestions,topic-7-suggestions,topic-8-suggestions,topic-9-suggestions,topic-10-suggestions,topic-11-suggestions,topic-12-suggestions,topic-13-suggestions,topic-14-suggestions,topic-15-suggestions,topic-16-suggestions,topic-17-suggestions
    
@@ -695,8 +695,6 @@ elif page == "Teklipler gory":
     df_HTOM_GOR = pd.read_csv('HTOM_GOR.csv')
   
 
-
-    
     data_type = st.selectbox(
         "Maglumat saýlaň",
         ["ÝOM", "OHOM", "HTOM", "Ählisi"])
