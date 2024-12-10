@@ -278,7 +278,14 @@ elif page == "Maglumat seljerişi":
         st.dataframe(combined_df.describe())
         # st.dataframe(combined_df)
 
-        cols = ["ýygnaklaryň_jemi","gatnaşyjylaryň_jemi","talyplar","mugallymlar","ene-atalar","pudak_edaralar","ýaş(0-17)","ýaş(18-29)","ýaş(30-59)","60+","zenan","erkek","tema_sany","teklip_sany"]
+        if BBM and not All:
+            cols = ["ýygnaklaryň_jemi","gatnaşyjylaryň_jemi","okuwçylar","mugallymlar","ene-atalar","pudak_edaralar","ýaş(0-17)","ýaş(18-29)","ýaş(30-59)","60+","zenan","erkek","tema_sany","teklip_sany"]
+        elif BBM and All:
+            cols = ["ýygnaklaryň_jemi","gatnaşyjylaryň_jemi","talyplar","okuwçylar", "mugallymlar","ene-atalar","pudak_edaralar","ýaş(0-17)","ýaş(18-29)","ýaş(30-59)","60+","zenan","erkek","tema_sany","teklip_sany"]
+        else:
+            cols = ["ýygnaklaryň_jemi","gatnaşyjylaryň_jemi","talyplar","mugallymlar","ene-atalar","pudak_edaralar","ýaş(0-17)","ýaş(18-29)","ýaş(30-59)","60+","zenan","erkek","tema_sany","teklip_sany"]
+
+
         selected_column = st.selectbox("Sütün saýlaň", cols)
         distribution_type = st.selectbox(
         # "Choose a Distribution Type",
