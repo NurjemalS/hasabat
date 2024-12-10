@@ -241,26 +241,33 @@ if page == "Umumy gözden geçiriş":
 
 elif page == "Maglumat seljerişi":
     BBM = False
+    All = False
     data_type = st.selectbox(
         "Maglumaty saýlaň",
         ["ÝOM", "OHOM",  "HTOM", "BBM", "Ählisi"] )
     
     if data_type == "ÝOM":
         combined_df = pd.concat([df_YOM_1])
+        combined_df['okuwçylar'] = 0
     elif data_type == "OHOM":
         combined_df = pd.concat([df_OHOM_1])
+        combined_df['okuwçylar'] = 0
     elif data_type == "HTOM":
         combined_df = pd.concat([df_HTOM_1])
+        combined_df['okuwçylar'] = 0
     elif data_type == "BBM":
         combined_df = pd.concat([df_BBM_1])
+        combined_df['talyplar'] = 0
         BBM = True
     else:
         piecharts = True
         BBM = True
+        All = True
         combined_df = pd.concat([df_YOM_1, df_OHOM_1, df_HTOM_1, df_BBM_1])
     
     combined_df["number"] = range(1, len(combined_df) + 1)
     combined_df = combined_df.fillna(0)
+    # st.dataframe(combined_df)
 
     
     with st.expander("Bap: Bölüniş"):
@@ -340,7 +347,14 @@ elif page == "Maglumat seljerişi":
             st.bar_chart(gender_totals)
         with col2:
             # Participants by Role
-            roles = ['talyplar', 'mugallymlar', 'ene-atalar', 'pudak_edaralar']
+            if BBM and not All:
+                roles = ['okuwçylar', 'mugallymlar', 'ene-atalar', 'pudak_edaralar']
+            elif BBM and All:
+                roles = ['talyplar','okuwçylar', 'mugallymlar', 'ene-atalar', 'pudak_edaralar']
+            else:
+                roles = ['talyplar', 'mugallymlar', 'ene-atalar', 'pudak_edaralar']
+
+            
             role_totals = combined_df[roles].sum()
             # st.write("### Total Participants by Role")
             st.write("### Hünäri boýunça gatnaşyjylar")
@@ -372,11 +386,21 @@ elif page == "Maglumat seljerişi":
 
         with col2:
             # st.metric(label="Total Participants", value=total_participants)
-            role_totals = combined_df[['talyplar', 'mugallymlar', 'ene-atalar', 'pudak_edaralar']].sum()
+            if BBM and not All:
+                role_totals = combined_df[['okuwçylar', 'mugallymlar', 'ene-atalar', 'pudak_edaralar']].sum()
+            elif BBM and All:
+                role_totals = combined_df[['talyplar', 'okuwçylar', 'mugallymlar', 'ene-atalar', 'pudak_edaralar']].sum()
+            else:
+                role_totals = combined_df[['talyplar', 'mugallymlar', 'ene-atalar', 'pudak_edaralar']].sum()
             st.write("### Hünäri boýunça bölünişi")
             fig, ax = plt.subplots()
             fig, ax = plt.subplots(figsize=(6, 4))  # Adjust width and height
-            ax.pie(role_totals, labels=['talyplar', 'mugallymlar', 'ene-atalar', 'pudak_edaralar'], autopct='%1.1f%%', startangle=90, colors=["#90ee90", "#87cefa", "#f59393", "#cb7bed"])
+            if BBM and not All:
+                ax.pie(role_totals, labels=['okuwçylar', 'mugallymlar', 'ene-atalar', 'pudak_edaralar'], autopct='%1.1f%%', startangle=90, colors=["#90ee90", "#87cefa", "#f59393", "#cb7bed"])
+            elif BBM and All:
+                ax.pie(role_totals, labels=['talyplar', 'okuwçylar', 'mugallymlar', 'ene-atalar', 'pudak_edaralar'], autopct='%1.1f%%', startangle=90, colors=["#90ee90", "#87cefa", "#f59393", "#cb7bed", "#f2f277"])
+            else:
+                ax.pie(role_totals, labels=['talyplar', 'mugallymlar', 'ene-atalar', 'pudak_edaralar'], autopct='%1.1f%%', startangle=90, colors=["#90ee90", "#87cefa", "#f59393", "#cb7bed"])
             ax.axis('equal')
             st.pyplot(fig)
         with col3:
@@ -415,7 +439,14 @@ elif page == "Maglumat seljerişi":
 
                 # Filter data for selected universities
             filtered_data = combined_df[combined_df["ady"].isin(selected_universities)]
-            job_totals = filtered_data[['talyplar', 'mugallymlar', 'ene-atalar', 'pudak_edaralar']].sum()
+
+            if BBM and not All:
+                job_totals = filtered_data[['okuwçylar', 'mugallymlar', 'ene-atalar', 'pudak_edaralar']].sum()
+            elif BBM and All:
+                job_totals = filtered_data[['okuwçylar','talyplar', 'mugallymlar', 'ene-atalar', 'pudak_edaralar']].sum()
+            else:
+                job_totals = filtered_data[['talyplar', 'mugallymlar', 'ene-atalar', 'pudak_edaralar']].sum()
+
                 # sorted_suggestions = suggestions_totals.sort_values(ascending=True)
             st.bar_chart(job_totals)
     
