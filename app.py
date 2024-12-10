@@ -500,6 +500,71 @@ elif page == "Maglumat seljerişi":
 
     with st.expander("Bap: Tema seljerişi"):
         
+        # topics = ["tema-1", "tema-2", "tema-3", "tema-4", "tema-5", "tema-6", "tema-7", "tema-8", 
+        #   "tema-9", "tema-10", "tema-11", "tema-12", "tema-13", "tema-14", "tema-15", 
+        #   "tema-16", "tema-17"]        
+        # for i in range(len(topics)):
+        #     combined_df[topics[i]] = combined_df[topics[i]] * combined_df['ýygnaklaryň_jemi']
+        # # st.dataframe(combined_df)
+
+
+        # suggestions = ["tema-1-teklip-boýunça", "tema-2-teklip-boýunça", "tema-3-teklip-boýunça", "tema-4-teklip-boýunça", "tema-5-teklip-boýunça", "tema-6-teklip-boýunça", "tema-7-teklip-boýunça", "tema-8-teklip-boýunça", 
+        #   "tema-9-teklip-boýunça", "tema-10-teklip-boýunça", "tema-11-teklip-boýunça", "tema-12-teklip-boýunça", "tema-13-teklip-boýunça", "tema-14-teklip-boýunça", "tema-15-teklip-boýunça", 
+        #   "tema-16-teklip-boýunça", "tema-17-teklip-boýunça"]
+
+        # # Example layers of data (representing different categories, e.g., discussions, suggestions)
+        # layer1 = []
+        # layer2 = []
+        # for col in topics + suggestions:
+        #     combined_df[col] = pd.to_numeric(combined_df[col], errors='coerce')
+        # for i in topics:
+        #     layer1.append(combined_df[i].sum())
+        # for i in suggestions:
+        #     layer2.append(combined_df[i].sum())
+        
+        # # st.write(layer2)
+        # # st.write(layer1)
+        # data_layers = [layer1, layer2]
+        # colors = ["blue", "orange"]
+        # labels = ["ara alyp maslahatlaşmalaryň sany", "teklipleriň sany"]
+
+        # # print(layer1)
+        # # print(layer2)
+
+        # # Define angles for each topic
+        # angles = np.linspace(0, 2 * np.pi, len(topics), endpoint=False).tolist()
+        # angles += angles[:1]
+        # for layer in data_layers:
+        #     layer.append(layer[0])
+
+        # fig, ax = plt.subplots(figsize=(10, 10), subplot_kw={"polar": True})
+        # for idx, layer in enumerate(data_layers):
+        #     ax.bar(
+        #         angles, 
+        #         layer, 
+        #         color=colors[idx], 
+        #         alpha=0.6, 
+        #         width=0.35,  # Adjust the width for layering
+        #         label=labels[idx]
+        #     )
+        
+        # # Add labels for topics
+        # ax.set_xticks(angles[:-1])
+        # ax.set_xticklabels(topics, fontsize=8, rotation=45)
+
+        # # Title and Legend
+        # # ax.set_title("Topic Discussions and Suggestions Analysis", va='bottom', fontsize=14)
+        # ax.set_title("Ara alyp maslahatlaşmalar we teklipler", va='bottom', fontsize=14)
+        # # st.write(" we teklipler seljermesi")
+    
+        # ax.legend(loc="upper right", bbox_to_anchor=(1.2, 1.1))
+
+        # # Streamlit Display
+        # st.pyplot(fig)
+
+        # ----------------------------------------------------------------
+
+
         topics = ["tema-1", "tema-2", "tema-3", "tema-4", "tema-5", "tema-6", "tema-7", "tema-8", 
           "tema-9", "tema-10", "tema-11", "tema-12", "tema-13", "tema-14", "tema-15", 
           "tema-16", "tema-17"]        
@@ -521,46 +586,63 @@ elif page == "Maglumat seljerişi":
             layer1.append(combined_df[i].sum())
         for i in suggestions:
             layer2.append(combined_df[i].sum())
-        
-        # st.write(layer2)
-        # st.write(layer1)
-        data_layers = [layer1, layer2]
-        colors = ["blue", "orange"]
-        labels = ["ara alyp maslahatlaşmalaryň sany", "teklipleriň sany"]
 
-        # print(layer1)
-        # print(layer2)
-
-        # Define angles for each topic
+        # Ensure the circular plots wrap around
         angles = np.linspace(0, 2 * np.pi, len(topics), endpoint=False).tolist()
         angles += angles[:1]
-        for layer in data_layers:
-            layer.append(layer[0])
+        layer1 += [layer1[0]]
+        layer2 += [layer2[0]]
 
+        # Create the polar bar chart
         fig, ax = plt.subplots(figsize=(10, 10), subplot_kw={"polar": True})
-        for idx, layer in enumerate(data_layers):
-            ax.bar(
-                angles, 
-                layer, 
-                color=colors[idx], 
-                alpha=0.6, 
-                width=0.35,  # Adjust the width for layering
-                label=labels[idx]
+
+        # Plot layer1
+        bars_layer1 = ax.bar(
+            angles,
+            layer1,
+            color="blue",
+            alpha=0.6,
+            width=0.35,
+            label="ara alyp maslahatlaşmalaryň sany"
+        )
+
+        # Add numerical labels for layer1
+        for angle, value in zip(angles, layer1):
+            ax.text(
+                angle,
+                value + 10,  # Position above the bar
+                f"{value:.0f}",  # Format as integer
+                ha="center",  # Center-align text
+                fontsize=10,
+                color="black"
             )
-        
+
+        # Plot layer2
+        bars_layer2 = ax.bar(
+            angles,
+            layer2,
+            color="orange",
+            alpha=0.6,
+            width=0.25,  # Narrower width for layering
+            label="teklipleriň sany"
+        )
+
         # Add labels for topics
         ax.set_xticks(angles[:-1])
         ax.set_xticklabels(topics, fontsize=8, rotation=45)
 
         # Title and Legend
-        # ax.set_title("Topic Discussions and Suggestions Analysis", va='bottom', fontsize=14)
-        ax.set_title("Ara alyp maslahatlaşmalar we teklipler", va='bottom', fontsize=14)
-        # st.write(" we teklipler seljermesi")
-    
+        ax.set_title("Ara alyp maslahatlaşmalar we teklipler", va="bottom", fontsize=14)
         ax.legend(loc="upper right", bbox_to_anchor=(1.2, 1.1))
 
         # Streamlit Display
         st.pyplot(fig)
+
+
+         # ----------------------------------------------------------------
+
+
+
 
         # st.write(combined_df["topic-6"].sum())
         # st.write(combined_df["topic-6-suggestion-number"].sum())
