@@ -543,7 +543,8 @@ elif page == "Maglumat seljerişi":
             layer1.append(combined_df[i].sum())
         for i in suggestions:
             layer2.append(combined_df[i].sum())
-        
+        plt.rcParams["font.family"] = "Times New Roman"
+
         # st.write(layer2)
         # st.write(layer1)
         data_layers = [layer1, layer2]
@@ -559,7 +560,6 @@ elif page == "Maglumat seljerişi":
         for layer in data_layers:
             layer.append(layer[0])
         # Set font style to Times New Roman globally
-        plt.rcParams["font.family"] = "Times New Roman"
 
 
         fig, ax = plt.subplots(figsize=(12, 12), subplot_kw={"polar": True})
