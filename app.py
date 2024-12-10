@@ -78,7 +78,8 @@ df_YOM_1['ýaş(0-17)'] = df_YOM_1['ýaş(0-17)'].astype(int)
 # print(df_YOM_1.dtypes)
 df_OHOM_1 = pd.read_csv('OHOM_1.csv')
 df_HTOM_1 = pd.read_csv('HTOM_1.csv')
-# print(df_OHOM_1.dtypes)
+df_BBM_1 = pd.read_csv('BBM_1.csv')
+
 # print(df_HTOM_1.dtypes)
 
 YOM_participant = df_YOM_1['gatnaşyjylaryň_jemi'].sum()
@@ -92,6 +93,10 @@ OHOM_suggestions = df_OHOM_1['teklip_sany'].sum()
 HTOM_participant = df_HTOM_1['gatnaşyjylaryň_jemi'].sum()
 HTOM_meetings = df_HTOM_1['ýygnaklaryň_jemi'].sum()
 HTOM_suggestions = df_HTOM_1['teklip_sany'].sum()
+
+BBM_participant = df_BBM_1['gatnaşyjylaryň_jemi'].sum()
+BBM_meetings = df_BBM_1['ýygnaklaryň_jemi'].sum()
+BBM_suggestions = df_BBM_1['teklip_sany'].sum()
 piecharts = False
 
 # st.write(type(combined_df["age(0-17)"][2]))
@@ -118,7 +123,7 @@ if page == "Umumy gözden geçiriş":
     st.markdown("Bu sahypada umumy gözden geçirilen ähli toplanan maglumatlaryň jemi görkezilyär.")
     data_type = st.selectbox(
         "Maglumat saýlaň",
-        ["ÝOM", "OHOM",  "HTOM", "Ählisi"] )
+        ["ÝOM", "OHOM",  "HTOM", "BBM", "Ählisi"] )
     
     if data_type == "ÝOM":
         combined_df = pd.concat([df_YOM_1])
@@ -126,9 +131,11 @@ if page == "Umumy gözden geçiriş":
         combined_df = pd.concat([df_OHOM_1])
     elif data_type == "HTOM":
         combined_df = pd.concat([df_HTOM_1])
+    elif data_type == "BBM":
+        combined_df = pd.concat([df_BBM_1])
     else:
         piecharts = True
-        combined_df = pd.concat([df_YOM_1, df_OHOM_1, df_HTOM_1])
+        combined_df = pd.concat([df_YOM_1, df_OHOM_1, df_HTOM_1, df_BBM_1])
 
 
     combined_df["number"] = range(1, len(combined_df) + 1)
@@ -165,22 +172,28 @@ if page == "Umumy gözden geçiriş":
         (YOM_participant / total_participants) * 100,
         (OHOM_participant / total_participants) * 100,
         (HTOM_participant / total_participants) * 100,
+        (BBM_participant / total_participants) * 100
     ]
 
     meeting_percentages = [
         (YOM_meetings / total_meetings) * 100,
         (OHOM_meetings / total_meetings) * 100,
         (HTOM_meetings / total_meetings) * 100,
+        (BBM_meetings / total_meetings) * 100
+
     ]
 
     suggestion_percentages = [
         (YOM_suggestions / total_suggestions) * 100,
         (OHOM_suggestions / total_suggestions) * 100,
         (HTOM_suggestions / total_suggestions) * 100,
+        (BBM_suggestions / total_meetings) * 100
+
     ]
 
+
     # Labels for the datasets
-    labels = ["ÝOM", "OHOM", "HTOM"]
+    labels = ["ÝOM", "OHOM", "HTOM", "BBM"]
 
     if piecharts:
 
@@ -198,7 +211,7 @@ if page == "Umumy gözden geçiriş":
             st.write("#### Maslahata gatnaşyjylaryň göterimi ")
             # st.write("#### Participants Percentage")
             fig1, ax1 = plt.subplots()
-            ax1.pie(participant_percentages, labels=labels, autopct="%1.1f%%", startangle=90, colors=["#90ee90", "#87cefa", "#f59393"])
+            ax1.pie(participant_percentages, labels=labels, autopct="%1.1f%%", startangle=90, colors=["#90ee90", "#87cefa", "#f59393", "#f2f277"])
             st.write("Maslahata gatnaşyjylaryň goşandy")
             # ax1.set_title("Participants Contribution")
             ax1.axis("equal")  # Equal aspect ratio ensures the pie chart is circular.
@@ -209,7 +222,7 @@ if page == "Umumy gözden geçiriş":
             # st.write("#### Meetings Percentage")
             st.write("#### Geçirilen maslahatlaryň göterimi")
             fig2, ax2 = plt.subplots()
-            ax2.pie(meeting_percentages, labels=labels, autopct="%1.1f%%", startangle=90, colors=["#90ee90", "#87cefa", "#f59393"])
+            ax2.pie(meeting_percentages, labels=labels, autopct="%1.1f%%", startangle=90, colors=["#90ee90", "#87cefa", "#f59393", "#f2f277"])
             # ax2.set_title("Meetings Contribution")
             st.write("Geçirilen maslahatlaryň goşandy")
             ax2.axis("equal")
@@ -220,16 +233,17 @@ if page == "Umumy gözden geçiriş":
             # st.write("#### Suggestions Percentage")
             st.write("#### Teklipleriň göterimi")
             fig3, ax3 = plt.subplots()
-            ax3.pie(suggestion_percentages, labels=labels, autopct="%1.1f%%", startangle=90, colors=["#90ee90", "#87cefa", "#f59393"])
+            ax3.pie(suggestion_percentages, labels=labels, autopct="%1.1f%%", startangle=90, colors=["#90ee90", "#87cefa", "#f59393", "#f2f277"])
             # ax3.set_title("Suggestions Contribution")
             st.write(" Maslahatyň netijesinde hödürlenen teklipleriň goşandy")
             ax3.axis("equal")
             st.pyplot(fig3)
 
 elif page == "Maglumat seljerişi":
+    BBM = False
     data_type = st.selectbox(
         "Maglumaty saýlaň",
-        ["ÝOM", "OHOM",  "HTOM", "Ählisi"] )
+        ["ÝOM", "OHOM",  "HTOM", "BBM", "Ählisi"] )
     
     if data_type == "ÝOM":
         combined_df = pd.concat([df_YOM_1])
@@ -237,9 +251,12 @@ elif page == "Maglumat seljerişi":
         combined_df = pd.concat([df_OHOM_1])
     elif data_type == "HTOM":
         combined_df = pd.concat([df_HTOM_1])
+    elif data_type == "BBM":
+        combined_df = pd.concat([df_BBM_1])
+        BBM = True
     else:
         piecharts = True
-        combined_df = pd.concat([df_YOM_1, df_OHOM_1, df_HTOM_1])
+        combined_df = pd.concat([df_YOM_1, df_OHOM_1, df_HTOM_1, df_BBM_1])
     
     combined_df["number"] = range(1, len(combined_df) + 1)
     combined_df = combined_df.fillna(0)
@@ -367,7 +384,10 @@ elif page == "Maglumat seljerişi":
             st.write("### Ýaşy boýunça bölünişi")
             fig, ax = plt.subplots()
             fig, ax = plt.subplots(figsize=(6, 4))  # Adjust width and height
-            ax.pie(age_totals, labels=['ýaş(0-17)', 'ýaş(18-29)', 'ýaş(30-59)', '60+'], autopct='%1.1f%%', startangle=90, colors=["#f59393", "#90ee90", "#87cefa","#cb7bed"], pctdistance=1.6,labeldistance=1.1)
+            if BBM:
+                ax.pie(age_totals, labels=['ýaş(0-17)', 'ýaş(18-29)', 'ýaş(30-59)', '60+'], autopct='%1.1f%%', startangle=90, colors=["#f59393", "#90ee90", "#87cefa","#cb7bed"])
+            else:
+                ax.pie(age_totals, labels=['ýaş(0-17)', 'ýaş(18-29)', 'ýaş(30-59)', '60+'], autopct='%1.1f%%', startangle=90, colors=["#f59393", "#90ee90", "#87cefa","#cb7bed"], pctdistance=1.6,labeldistance=1.1)
             ax.axis('equal')
             st.pyplot(fig)
 
@@ -449,9 +469,9 @@ elif page == "Maglumat seljerişi":
         # st.dataframe(combined_df)
 
 
-        suggestions = ["tema-1-teklip-sany", "tema-2-teklip-sany", "tema-3-teklip-sany", "tema-4-teklip-sany", "tema-5-teklip-sany", "tema-6-teklip-sany", "tema-7-teklip-sany", "tema-8-teklip-sany", 
-          "tema-9-teklip-sany", "tema-10-teklip-sany", "tema-11-teklip-sany", "tema-12-teklip-sany", "tema-13-teklip-sany", "tema-14-teklip-sany", "tema-15-teklip-sany", 
-          "tema-16-teklip-sany", "tema-17-teklip-sany"]
+        suggestions = ["tema-1-teklip-boýunça", "tema-2-teklip-boýunça", "tema-3-teklip-boýunça", "tema-4-teklip-boýunça", "tema-5-teklip-boýunça", "tema-6-teklip-boýunça", "tema-7-teklip-boýunça", "tema-8-teklip-boýunça", 
+          "tema-9-teklip-boýunça", "tema-10-teklip-boýunça", "tema-11-teklip-boýunça", "tema-12-teklip-boýunça", "tema-13-teklip-boýunça", "tema-14-teklip-boýunça", "tema-15-teklip-boýunça", 
+          "tema-16-teklip-boýunça", "tema-17-teklip-boýunça"]
 
         # Example layers of data (representing different categories, e.g., discussions, suggestions)
         layer1 = []
@@ -463,6 +483,8 @@ elif page == "Maglumat seljerişi":
         for i in suggestions:
             layer2.append(combined_df[i].sum())
         
+        # st.write(layer2)
+        # st.write(layer1)
         data_layers = [layer1, layer2]
         colors = ["blue", "orange"]
         labels = ["ara alyp maslahatlaşmalaryň sany", "teklipleriň sany"]
@@ -514,8 +536,20 @@ elif page == "Maglumat seljerişi":
         # counts = [380, 250, 300, 200, 400, 280, 350, 100, 450, 320, 200, 180, 370, 240, 260, 300, 220]
 
         # Calculate percentages
+        layer2.pop()
         total = sum(layer2)
-        percentages = [(count / total) * 100 for count in layer2]
+        # st.write(layer2)
+        # st.write(total)
+
+        percentages = []  # Initialize an empty list to store percentages
+        for count in layer2:
+            percentage = (count / total) * 100
+            print(f"Count: {count}, Total: {total}, Percentage: {percentage:.2f}%")
+            percentages.append(percentage)
+        
+        # st.write(sum(percentages))
+        # percentages = [(count / total) * 100 for count in layer2]
+
 
         # Sort data by percentage (optional for better visualization)
         sorted_data = sorted(zip(suggestions, percentages), key=lambda x: x[1], reverse=True)
@@ -546,9 +580,9 @@ elif page == "Maglumat seljerişi":
               
         # Participants by Role
         # roles = ['students', 'profs', 'parents', 'sectors']
-        suggestions_per_topic_numbers = ["tema-1-teklip-sany", "tema-2-teklip-sany", "tema-3-teklip-sany", "tema-4-teklip-sany", "tema-5-teklip-sany", "tema-6-teklip-sany", "tema-7-teklip-sany", "tema-8-teklip-sany", 
-          "tema-9-teklip-sany", "tema-10-teklip-sany", "tema-11-teklip-sany", "tema-12-teklip-sany", "tema-13-teklip-sany", "tema-14-teklip-sany", "tema-15-teklip-sany", 
-          "tema-16-teklip-sany", "tema-17-teklip-sany"]
+        suggestions_per_topic_numbers = ["tema-1-teklip-boýunça", "tema-2-teklip-boýunça", "tema-3-teklip-boýunça", "tema-4-teklip-boýunça", "tema-5-teklip-boýunça", "tema-6-teklip-boýunça", "tema-7-teklip-boýunça", "tema-8-teklip-boýunça", 
+          "tema-9-teklip-boýunça", "tema-10-teklip-boýunça", "tema-11-teklip-boýunça", "tema-12-teklip-boýunça", "tema-13-teklip-boýunça", "tema-14-teklip-boýunça", "tema-15-teklip-boýunça", 
+          "tema-16-teklip-boýunça", "tema-17-teklip-boýunça"]
         suggestions_totals = combined_df[suggestions_per_topic_numbers].sum()
         print(suggestions_totals.sort_values(ascending=True))
         sorted_suggestions = suggestions_totals.sort_values(ascending=True)
