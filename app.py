@@ -530,9 +530,9 @@ elif page == "Maglumat seljerişi":
         # st.dataframe(combined_df)
 
 
-        suggestions = ["tema-1-teklip-boýunça", "tema-2-teklip-boýunça", "tema-3-teklip-boýunça", "tema-4-teklip-boýunça", "tema-5-teklip-boýunça", "tema-6-teklip-boýunça", "tema-7-teklip-boýunça", "tema-8-teklip-boýunça", 
-          "tema-9-teklip-boýunça", "tema-10-teklip-boýunça", "tema-11-teklip-boýunça", "tema-12-teklip-boýunça", "tema-13-teklip-boýunça", "tema-14-teklip-boýunça", "tema-15-teklip-boýunça", 
-          "tema-16-teklip-boýunça", "tema-17-teklip-boýunça"]
+        suggestions = ["tema-1-", "tema-2-", "tema-3-", "tema-4-", "tema-5-", "tema-6-", "tema-7-", "tema-8-", 
+          "tema-9-", "tema-10-", "tema-11-", "tema-12-", "tema-13-", "tema-14-", "tema-15-", 
+          "tema-16-", "tema-17-"]
 
         # Example layers of data (representing different categories, e.g., discussions, suggestions)
         layer1 = []
@@ -579,7 +579,7 @@ elif page == "Maglumat seljerişi":
 
         # Title and Legend
         # ax.set_title("Topic Discussions and Suggestions Analysis", va='bottom', fontsize=14)
-        ax.set_title("Ara alyp maslahatlaşmalar we teklipler", va='bottom', fontsize=22, pad = 15)
+        ax.set_title("Maslahatlaşmalar we teklipler", va='bottom', fontsize=22, pad = 15)
         # st.write(" we teklipler seljermesi")
     
         ax.legend(loc="upper right", bbox_to_anchor=(1.2, 1.1), fontsize=16)
@@ -740,9 +740,9 @@ elif page == "Maglumat seljerişi":
               
         # Participants by Role
         # roles = ['students', 'profs', 'parents', 'sectors']
-        suggestions_per_topic_numbers = ["tema-1-teklip-boýunça", "tema-2-teklip-boýunça", "tema-3-teklip-boýunça", "tema-4-teklip-boýunça", "tema-5-teklip-boýunça", "tema-6-teklip-boýunça", "tema-7-teklip-boýunça", "tema-8-teklip-boýunça", 
-          "tema-9-teklip-boýunça", "tema-10-teklip-boýunça", "tema-11-teklip-boýunça", "tema-12-teklip-boýunça", "tema-13-teklip-boýunça", "tema-14-teklip-boýunça", "tema-15-teklip-boýunça", 
-          "tema-16-teklip-boýunça", "tema-17-teklip-boýunça"]
+        suggestions_per_topic_numbers = ["tema-1-", "tema-2-", "tema-3-", "tema-4-", "tema-5-", "tema-6-", "tema-7-", "tema-8-", 
+          "tema-9-", "tema-10-", "tema-11-", "tema-12-", "tema-13-", "tema-14-", "tema-15-", 
+          "tema-16-", "tema-17-"]
         suggestions_totals = combined_df[suggestions_per_topic_numbers].sum()
         print(suggestions_totals.sort_values(ascending=True))
         plt.rcParams["font.family"] = "Times New Roman"
@@ -750,20 +750,6 @@ elif page == "Maglumat seljerişi":
         st.write("### Her tema boýunça teklipleriň sany")
         st.bar_chart(sorted_suggestions)
 
-
-        # Plot the bar chart with matplotlib for full control
-        fig, ax = plt.subplots(figsize=(12, 8))  # Larger figure size
-        ax.barh(sorted_suggestions.index, sorted_suggestions.values, color="skyblue")
-
-        # Customize the chart
-        ax.set_title("Her tema boýunça teklipleriň sany", fontsize=20, weight="bold", pad=15)
-        ax.set_xlabel("Teklipleriň sany", fontsize=16, labelpad=10)
-        ax.set_ylabel("Temalar", fontsize=16, labelpad=10)
-        ax.tick_params(axis="x", labelsize=14)
-        ax.tick_params(axis="y", labelsize=16)
-
-        # Display the chart
-        st.pyplot(fig)
 
         # print(combined_df.dtypes)
 
