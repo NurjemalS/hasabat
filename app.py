@@ -3,6 +3,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
 from collections import defaultdict
+from matplotlib import cm
 
 # import plotly.express as px
 
@@ -11,6 +12,7 @@ from collections import defaultdict
 # number,abbr,ady,ýygnaklaryň_jemi,gatnaşyjylaryň_jemi,talyplar,mugallymlar,ene-atalar,pudak_edaralar,ýaş(0-17),ýaş(18-29),ýaş(30-59),60+,zenan,erkek,tema_sany,teklip_sany,tema-1,tema-2,tema-3,tema-4,tema-5,tema-6,tema-7,tema-8,tema-9,tema-10,tema-11,tema-12,tema-13,tema-14,tema-15,tema-16,tema-17,tema-1-teklip-sany,tema-2-teklip-sany,tema-3-teklip-sany,tema-4-teklip-sany,tema-5-teklip-sany,tema-6-teklip-sany,tema-7-teklip-sany,tema-8-teklip-sany,tema-9-teklip-sany,tema-10-teklip-sany,tema-11-teklip-sany,tema-12-teklip-sany,tema-13-teklip-sany,tema-14-teklip-sany,tema-15-teklip-sany,tema-16-teklip-sany,tema-17-teklip-sany
 
 # number,abbr,name,total_suggestion,topic-1-suggestions,topic-2-suggestions,topic-3-suggestions,topic-4-suggestions,topic-5-suggestions,topic-6-suggestions,topic-7-suggestions,topic-8-suggestions,topic-9-suggestions,topic-10-suggestions,topic-11-suggestions,topic-12-suggestions,topic-13-suggestions,topic-14-suggestions,topic-15-suggestions,topic-16-suggestions,topic-17-suggestions
+
 
 
 topics = ["1. Gahryman Arkadagymyzyň öňe süren teklibine laýyklykda geçirilýän maslahatlary geçirmegiň ähmiýetini düzündirmek bilen bagly maslahatlar",
@@ -64,6 +66,23 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
+
+st.markdown(
+        """
+        <style>
+        body {
+            font-family: "Times New Roman", Times, serif;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            font-family: "Times New Roman", Times, serif;
+        }
+        div, span, p, label {
+            font-family: "Times New Roman", Times, serif;
+        }
+        </style>
+        """,
+        unsafe_allow_html=True,
+    )
 
 
 # file_path = 'YOM_1.xlsx'
@@ -209,9 +228,10 @@ if page == "Umumy gözden geçiriş":
         with col1:
             # Pie chart for participants
             st.write("#### Maslahata gatnaşyjylaryň göterimi ")
+            plt.rcParams["font.family"] = "Times New Roman"
             # st.write("#### Participants Percentage")
             fig1, ax1 = plt.subplots()
-            ax1.pie(participant_percentages, labels=labels, autopct="%1.1f%%", startangle=90, colors=["#90ee90", "#87cefa", "#f59393", "#f2f277"])
+            ax1.pie(participant_percentages, labels=labels, autopct="%1.1f%%", startangle=90, colors=["#90ee90", "#87cefa", "#f59393", "#f2f277"], textprops={"fontsize": 15})
             st.write("Maslahata gatnaşyjylaryň goşandy")
             # ax1.set_title("Participants Contribution")
             ax1.axis("equal")  # Equal aspect ratio ensures the pie chart is circular.
@@ -222,7 +242,7 @@ if page == "Umumy gözden geçiriş":
             # st.write("#### Meetings Percentage")
             st.write("#### Geçirilen maslahatlaryň göterimi")
             fig2, ax2 = plt.subplots()
-            ax2.pie(meeting_percentages, labels=labels, autopct="%1.1f%%", startangle=90, colors=["#90ee90", "#87cefa", "#f59393", "#f2f277"])
+            ax2.pie(meeting_percentages, labels=labels, autopct="%1.1f%%", startangle=90, colors=["#90ee90", "#87cefa", "#f59393", "#f2f277"], textprops={"fontsize": 15})
             # ax2.set_title("Meetings Contribution")
             st.write("Geçirilen maslahatlaryň goşandy")
             ax2.axis("equal")
@@ -233,7 +253,7 @@ if page == "Umumy gözden geçiriş":
             # st.write("#### Suggestions Percentage")
             st.write("#### Teklipleriň göterimi")
             fig3, ax3 = plt.subplots()
-            ax3.pie(suggestion_percentages, labels=labels, autopct="%1.1f%%", startangle=90, colors=["#90ee90", "#87cefa", "#f59393", "#f2f277"])
+            ax3.pie(suggestion_percentages, labels=labels, autopct="%1.1f%%", startangle=90, colors=["#90ee90", "#87cefa", "#f59393", "#f2f277"], textprops={"fontsize": 15})
             # ax3.set_title("Suggestions Contribution")
             st.write(" Maslahatyň netijesinde hödürlenen teklipleriň goşandy")
             ax3.axis("equal")
@@ -385,9 +405,10 @@ elif page == "Maglumat seljerişi":
 
             gender_totals = combined_df[['zenan', 'erkek']].sum()
             st.write("### Jynsy boýunça bölünişi")
+            plt.rcParams["font.family"] = "Times New Roman"
             fig, ax = plt.subplots()
             fig, ax = plt.subplots(figsize=(6, 4))  # Adjust width and height
-            ax.pie(gender_totals, labels=['Zenan', 'Erkek'], autopct='%1.1f%%', startangle=90, colors=["#f59393", "#87cefa" ])
+            ax.pie(gender_totals, labels=['Zenan', 'Erkek'], autopct='%1.1f%%', startangle=90, colors=["#f59393", "#87cefa" ], textprops={"fontsize": 15})
             ax.axis('equal')
             st.pyplot(fig)
 
@@ -400,26 +421,28 @@ elif page == "Maglumat seljerişi":
             else:
                 role_totals = combined_df[['talyplar', 'mugallymlar', 'ene-atalar', 'pudak-edaralar']].sum()
             st.write("### Hünäri boýunça bölünişi")
+            plt.rcParams["font.family"] = "Times New Roman"
             fig, ax = plt.subplots()
             fig, ax = plt.subplots(figsize=(6, 4))  # Adjust width and height
             if BBM and not All:
-                ax.pie(role_totals, labels=['okuwçylar', 'mugallymlar', 'ene-atalar', 'pudak-edaralar'], autopct='%1.1f%%', startangle=90, colors=["#90ee90", "#87cefa", "#f59393", "#cb7bed"])
+                ax.pie(role_totals, labels=['okuwçylar', 'mugallymlar', 'ene-atalar', 'pudak-edaralar'], autopct='%1.1f%%', startangle=90, colors=["#90ee90", "#87cefa", "#f59393", "#cb7bed"], textprops={"fontsize": 15})
             elif BBM and All:
-                ax.pie(role_totals, labels=['talyplar', 'okuwçylar', 'mugallymlar', 'ene-atalar', 'pudak-edaralar'], autopct='%1.1f%%', startangle=90, colors=["#90ee90", "#87cefa", "#f59393", "#cb7bed", "#f2f277"])
+                ax.pie(role_totals, labels=['talyplar', 'okuwçylar', 'mugallymlar', 'ene-atalar', 'pudak-edaralar'], autopct='%1.1f%%', startangle=90, colors=["#90ee90", "#87cefa", "#f59393", "#cb7bed", "#f2f277"], textprops={"fontsize": 15})
             else:
-                ax.pie(role_totals, labels=['talyplar', 'mugallymlar', 'ene-atalar', 'pudak-edaralar'], autopct='%1.1f%%', startangle=90, colors=["#90ee90", "#87cefa", "#f59393", "#cb7bed"])
+                ax.pie(role_totals, labels=['talyplar', 'mugallymlar', 'ene-atalar', 'pudak-edaralar'], autopct='%1.1f%%', startangle=90, colors=["#90ee90", "#87cefa", "#f59393", "#cb7bed"], textprops={"fontsize": 15})
             ax.axis('equal')
             st.pyplot(fig)
         with col3:
             # st.metric(label="Total Participants", value=total_participants)
             age_totals = combined_df[['ýaş(0-17)', 'ýaş(18-29)', 'ýaş(30-59)', '60+']].sum()
             st.write("### Ýaşy boýunça bölünişi")
+            plt.rcParams["font.family"] = "Times New Roman"
             fig, ax = plt.subplots()
             fig, ax = plt.subplots(figsize=(6, 4))  # Adjust width and height
             if BBM:
-                ax.pie(age_totals, labels=['ýaş(0-17)', 'ýaş(18-29)', 'ýaş(30-59)', '60+'], autopct='%1.1f%%', startangle=90, colors=["#f59393", "#90ee90", "#87cefa","#cb7bed"])
+                ax.pie(age_totals, labels=['ýaş(0-17)', 'ýaş(18-29)', 'ýaş(30-59)', '60+'], autopct='%1.1f%%', startangle=90, colors=["#f59393", "#90ee90", "#87cefa","#cb7bed"], textprops={"fontsize": 15})
             else:
-                ax.pie(age_totals, labels=['ýaş(0-17)', 'ýaş(18-29)', 'ýaş(30-59)', '60+'], autopct='%1.1f%%', startangle=90, colors=["#f59393", "#90ee90", "#87cefa","#cb7bed"], pctdistance=1.6,labeldistance=1.1)
+                ax.pie(age_totals, labels=['ýaş(0-17)', 'ýaş(18-29)', 'ýaş(30-59)', '60+'], autopct='%1.1f%%', startangle=90, colors=["#f59393", "#90ee90", "#87cefa","#cb7bed"], textprops={"fontsize": 15}, pctdistance=1.6,labeldistance=1.1)
             ax.axis('equal')
             st.pyplot(fig)
 
@@ -500,71 +523,6 @@ elif page == "Maglumat seljerişi":
 
     with st.expander("Bap: Tema seljerişi"):
         
-        # topics = ["tema-1", "tema-2", "tema-3", "tema-4", "tema-5", "tema-6", "tema-7", "tema-8", 
-        #   "tema-9", "tema-10", "tema-11", "tema-12", "tema-13", "tema-14", "tema-15", 
-        #   "tema-16", "tema-17"]        
-        # for i in range(len(topics)):
-        #     combined_df[topics[i]] = combined_df[topics[i]] * combined_df['ýygnaklaryň_jemi']
-        # # st.dataframe(combined_df)
-
-
-        # suggestions = ["tema-1-teklip-boýunça", "tema-2-teklip-boýunça", "tema-3-teklip-boýunça", "tema-4-teklip-boýunça", "tema-5-teklip-boýunça", "tema-6-teklip-boýunça", "tema-7-teklip-boýunça", "tema-8-teklip-boýunça", 
-        #   "tema-9-teklip-boýunça", "tema-10-teklip-boýunça", "tema-11-teklip-boýunça", "tema-12-teklip-boýunça", "tema-13-teklip-boýunça", "tema-14-teklip-boýunça", "tema-15-teklip-boýunça", 
-        #   "tema-16-teklip-boýunça", "tema-17-teklip-boýunça"]
-
-        # # Example layers of data (representing different categories, e.g., discussions, suggestions)
-        # layer1 = []
-        # layer2 = []
-        # for col in topics + suggestions:
-        #     combined_df[col] = pd.to_numeric(combined_df[col], errors='coerce')
-        # for i in topics:
-        #     layer1.append(combined_df[i].sum())
-        # for i in suggestions:
-        #     layer2.append(combined_df[i].sum())
-        
-        # # st.write(layer2)
-        # # st.write(layer1)
-        # data_layers = [layer1, layer2]
-        # colors = ["blue", "orange"]
-        # labels = ["ara alyp maslahatlaşmalaryň sany", "teklipleriň sany"]
-
-        # # print(layer1)
-        # # print(layer2)
-
-        # # Define angles for each topic
-        # angles = np.linspace(0, 2 * np.pi, len(topics), endpoint=False).tolist()
-        # angles += angles[:1]
-        # for layer in data_layers:
-        #     layer.append(layer[0])
-
-        # fig, ax = plt.subplots(figsize=(10, 10), subplot_kw={"polar": True})
-        # for idx, layer in enumerate(data_layers):
-        #     ax.bar(
-        #         angles, 
-        #         layer, 
-        #         color=colors[idx], 
-        #         alpha=0.6, 
-        #         width=0.35,  # Adjust the width for layering
-        #         label=labels[idx]
-        #     )
-        
-        # # Add labels for topics
-        # ax.set_xticks(angles[:-1])
-        # ax.set_xticklabels(topics, fontsize=8, rotation=45)
-
-        # # Title and Legend
-        # # ax.set_title("Topic Discussions and Suggestions Analysis", va='bottom', fontsize=14)
-        # ax.set_title("Ara alyp maslahatlaşmalar we teklipler", va='bottom', fontsize=14)
-        # # st.write(" we teklipler seljermesi")
-    
-        # ax.legend(loc="upper right", bbox_to_anchor=(1.2, 1.1))
-
-        # # Streamlit Display
-        # st.pyplot(fig)
-
-        # ----------------------------------------------------------------
-
-
         topics = ["tema-1", "tema-2", "tema-3", "tema-4", "tema-5", "tema-6", "tema-7", "tema-8", 
           "tema-9", "tema-10", "tema-11", "tema-12", "tema-13", "tema-14", "tema-15", 
           "tema-16", "tema-17"]        
@@ -586,57 +544,127 @@ elif page == "Maglumat seljerişi":
             layer1.append(combined_df[i].sum())
         for i in suggestions:
             layer2.append(combined_df[i].sum())
+        
+        # st.write(layer2)
+        # st.write(layer1)
+        data_layers = [layer1, layer2]
+        colors = ["blue", "orange"]
+        labels = ["ara alyp maslahatlaşmalaryň sany", "teklipleriň sany"]
 
-        # Ensure the circular plots wrap around
+        # print(layer1)
+        # print(layer2)
+
+        # Define angles for each topic
         angles = np.linspace(0, 2 * np.pi, len(topics), endpoint=False).tolist()
         angles += angles[:1]
-        layer1 += [layer1[0]]
-        layer2 += [layer2[0]]
+        for layer in data_layers:
+            layer.append(layer[0])
+        # Set font style to Times New Roman globally
+        plt.rcParams["font.family"] = "Times New Roman"
 
-        # Create the polar bar chart
-        fig, ax = plt.subplots(figsize=(10, 10), subplot_kw={"polar": True})
 
-        # Plot layer1
-        bars_layer1 = ax.bar(
-            angles,
-            layer1,
-            color="blue",
-            alpha=0.6,
-            width=0.35,
-            label="ara alyp maslahatlaşmalaryň sany"
-        )
-
-        # Add numerical labels for layer1
-        for angle, value in zip(angles, layer1):
-            ax.text(
-                angle,
-                value + 10,  # Position above the bar
-                f"{value:.0f}",  # Format as integer
-                ha="center",  # Center-align text
-                fontsize=10,
-                color="black"
+        fig, ax = plt.subplots(figsize=(12, 12), subplot_kw={"polar": True})
+        for idx, layer in enumerate(data_layers):
+            ax.bar(
+                angles, 
+                layer, 
+                color=colors[idx], 
+                alpha=0.6, 
+                width=0.35,  # Adjust the width for layering
+                label=labels[idx]
             )
-
-        # Plot layer2
-        bars_layer2 = ax.bar(
-            angles,
-            layer2,
-            color="orange",
-            alpha=0.6,
-            width=0.25,  # Narrower width for layering
-            label="teklipleriň sany"
-        )
-
+        
         # Add labels for topics
         ax.set_xticks(angles[:-1])
-        ax.set_xticklabels(topics, fontsize=8, rotation=45)
+        ax.set_xticklabels(topics, fontsize=16, rotation=45)
 
         # Title and Legend
-        ax.set_title("Ara alyp maslahatlaşmalar we teklipler", va="bottom", fontsize=14)
-        ax.legend(loc="upper right", bbox_to_anchor=(1.2, 1.1))
+        # ax.set_title("Topic Discussions and Suggestions Analysis", va='bottom', fontsize=14)
+        ax.set_title("Ara alyp maslahatlaşmalar we teklipler", va='bottom', fontsize=22, pad = 15)
+        # st.write(" we teklipler seljermesi")
+    
+        ax.legend(loc="upper right", bbox_to_anchor=(1.2, 1.1), fontsize=16)
+        # Increase radial labels font size
+        ax.tick_params(axis='y', labelsize=16)
 
         # Streamlit Display
         st.pyplot(fig)
+
+        # ----------------------------------------------------------------
+
+
+        # topics = ["tema-1", "tema-2", "tema-3", "tema-4", "tema-5", "tema-6", "tema-7", "tema-8", 
+        #   "tema-9", "tema-10", "tema-11", "tema-12", "tema-13", "tema-14", "tema-15", 
+        #   "tema-16", "tema-17"]        
+        # for i in range(len(topics)):
+        #     combined_df[topics[i]] = combined_df[topics[i]] * combined_df['ýygnaklaryň_jemi']
+        # # st.dataframe(combined_df)
+
+
+        # suggestions = ["tema-1-teklip-boýunça", "tema-2-teklip-boýunça", "tema-3-teklip-boýunça", "tema-4-teklip-boýunça", "tema-5-teklip-boýunça", "tema-6-teklip-boýunça", "tema-7-teklip-boýunça", "tema-8-teklip-boýunça", 
+        #   "tema-9-teklip-boýunça", "tema-10-teklip-boýunça", "tema-11-teklip-boýunça", "tema-12-teklip-boýunça", "tema-13-teklip-boýunça", "tema-14-teklip-boýunça", "tema-15-teklip-boýunça", 
+        #   "tema-16-teklip-boýunça", "tema-17-teklip-boýunça"]
+
+        # # Example layers of data (representing different categories, e.g., discussions, suggestions)
+        # layer1 = []
+        # layer2 = []
+        # for col in topics + suggestions:
+        #     combined_df[col] = pd.to_numeric(combined_df[col], errors='coerce')
+        # for i in topics:
+        #     layer1.append(combined_df[i].sum())
+        # for i in suggestions:
+        #     layer2.append(combined_df[i].sum())
+
+        # # Ensure the circular plots wrap around
+        # angles = np.linspace(0, 2 * np.pi, len(topics), endpoint=False).tolist()
+        # angles += angles[:1]
+        # layer1 += [layer1[0]]
+        # layer2 += [layer2[0]]
+
+        # # Create the polar bar chart
+        # fig, ax = plt.subplots(figsize=(10, 10), subplot_kw={"polar": True})
+
+        # # Plot layer1
+        # bars_layer1 = ax.bar(
+        #     angles,
+        #     layer1,
+        #     color="blue",
+        #     alpha=0.6,
+        #     width=0.35,
+        #     label="ara alyp maslahatlaşmalaryň sany"
+        # )
+
+        # # Add numerical labels for layer1
+        # for angle, value in zip(angles, layer1):
+        #     ax.text(
+        #         angle,
+        #         value + 10,  # Position above the bar
+        #         f"{value:.0f}",  # Format as integer
+        #         ha="center",  # Center-align text
+        #         fontsize=10,
+        #         color="black"
+        #     )
+
+        # # Plot layer2
+        # bars_layer2 = ax.bar(
+        #     angles,
+        #     layer2,
+        #     color="orange",
+        #     alpha=0.6,
+        #     width=0.25,  # Narrower width for layering
+        #     label="teklipleriň sany"
+        # )
+
+        # # Add labels for topics
+        # ax.set_xticks(angles[:-1])
+        # ax.set_xticklabels(topics, fontsize=8, rotation=45)
+
+        # # Title and Legend
+        # ax.set_title("Ara alyp maslahatlaşmalar we teklipler", va="bottom", fontsize=20)
+        # ax.legend(loc="upper right", bbox_to_anchor=(1.2, 1.1))
+
+        # # Streamlit Display
+        # st.pyplot(fig)
 
 
          # ----------------------------------------------------------------
@@ -676,25 +704,37 @@ elif page == "Maglumat seljerişi":
         sorted_data = sorted(zip(suggestions, percentages), key=lambda x: x[1], reverse=True)
         suggestions, percentages = zip(*sorted_data)
 
-        # Plot configuration
-        fig, ax = plt.subplots(figsize=(10, 8))
+        # Configure font
+        plt.rcParams["font.family"] = "Times New Roman"
 
-        bars = ax.barh(suggestions, percentages, color=plt.cm.tab20.colors)
+        # Plot configuration
+        fig, ax = plt.subplots(figsize=(12, 8))
+
+        bright_colors = cm.get_cmap('tab20c', len(suggestions)).colors
+        bars = ax.barh(suggestions, percentages, color=bright_colors)
 
         # Add percentage labels to bars
+        # for bar, percentage in zip(bars, percentages):
+        #     ax.text(
+        #         bar.get_width() + 1,  # Position to the right of the bar
+        #         bar.get_y() + bar.get_height() / 2,  # Vertically centered
+        #         f"{percentage:.1f}%",  # Format percentage
+        #         va="center", fontsize=10
+        #     )
         for bar, percentage in zip(bars, percentages):
             ax.text(
-                bar.get_width() + 1,  # Position to the right of the bar
+                bar.get_width() + 0.5,  # Position to the right of the bar
                 bar.get_y() + bar.get_height() / 2,  # Vertically centered
                 f"{percentage:.1f}%",  # Format percentage
-                va="center", fontsize=10
+                va="center", fontsize=18, color="black"  # Larger font size
             )
 
         # Chart labels and title
-        ax.set_xlabel("Göterim (%)", fontsize=12)
-        ax.set_title("Temalar boýunça teklipleriň göterimi ", fontsize=14, weight="bold")
+        ax.set_xlabel("Göterim (%)", fontsize=20, labelpad=12)
+        ax.set_title("Temalar boýunça teklipleriň göterimi ", fontsize=20, weight="bold", pad=18)
         ax.invert_yaxis()  # Reverse the order of suggestions for a top-to-bottom view
-
+        ax.tick_params(axis='y', labelsize=18)  # Larger font size for y-axis labels
+        ax.tick_params(axis='x', labelsize=18)  # Larger font size for x-axis labels
         # Streamlit Display
         st.pyplot(fig)
 
@@ -706,9 +746,25 @@ elif page == "Maglumat seljerişi":
           "tema-16-teklip-boýunça", "tema-17-teklip-boýunça"]
         suggestions_totals = combined_df[suggestions_per_topic_numbers].sum()
         print(suggestions_totals.sort_values(ascending=True))
+        plt.rcParams["font.family"] = "Times New Roman"
         sorted_suggestions = suggestions_totals.sort_values(ascending=True)
         st.write("### Her tema boýunça teklipleriň sany")
         st.bar_chart(sorted_suggestions)
+
+
+        # Plot the bar chart with matplotlib for full control
+        fig, ax = plt.subplots(figsize=(12, 8))  # Larger figure size
+        ax.barh(sorted_suggestions.index, sorted_suggestions.values, color="skyblue")
+
+        # Customize the chart
+        ax.set_title("Her tema boýunça teklipleriň sany", fontsize=20, weight="bold", pad=15)
+        ax.set_xlabel("Teklipleriň sany", fontsize=16, labelpad=10)
+        ax.set_ylabel("Temalar", fontsize=16, labelpad=10)
+        ax.tick_params(axis="x", labelsize=14)
+        ax.tick_params(axis="y", labelsize=16)
+
+        # Display the chart
+        st.pyplot(fig)
 
         # print(combined_df.dtypes)
 
