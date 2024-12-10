@@ -548,7 +548,7 @@ elif page == "Maglumat seljerişi":
         # st.write(layer1)
         data_layers = [layer1, layer2]
         colors = ["blue", "orange"]
-        labels = ["ara alyp maslahatlaşmalaryň sany", "teklipleriň sany"]
+        labels = ["maslahatlaşmalar", "teklipler"]
 
         # print(layer1)
         # print(layer2)
