@@ -279,11 +279,11 @@ elif page == "Maglumat seljerişi":
         # st.dataframe(combined_df)
 
         if BBM and not All:
-            cols = ["ýygnaklaryň_jemi","gatnaşyjylaryň_jemi","okuwçylar","mugallymlar","ene-atalar","pudak_edaralar","ýaş(0-17)","ýaş(18-29)","ýaş(30-59)","60+","zenan","erkek","tema_sany","teklip_sany"]
+            cols = ["ýygnaklaryň_jemi","gatnaşyjylaryň_jemi","okuwçylar","mugallymlar","ene-atalar","pudak-edaralar","ýaş(0-17)","ýaş(18-29)","ýaş(30-59)","60+","zenan","erkek","tema_sany","teklip_sany"]
         elif BBM and All:
-            cols = ["ýygnaklaryň_jemi","gatnaşyjylaryň_jemi","talyplar","okuwçylar", "mugallymlar","ene-atalar","pudak_edaralar","ýaş(0-17)","ýaş(18-29)","ýaş(30-59)","60+","zenan","erkek","tema_sany","teklip_sany"]
+            cols = ["ýygnaklaryň_jemi","gatnaşyjylaryň_jemi","talyplar","okuwçylar", "mugallymlar","ene-atalar","pudak-edaralar","ýaş(0-17)","ýaş(18-29)","ýaş(30-59)","60+","zenan","erkek","tema_sany","teklip_sany"]
         else:
-            cols = ["ýygnaklaryň_jemi","gatnaşyjylaryň_jemi","talyplar","mugallymlar","ene-atalar","pudak_edaralar","ýaş(0-17)","ýaş(18-29)","ýaş(30-59)","60+","zenan","erkek","tema_sany","teklip_sany"]
+            cols = ["ýygnaklaryň_jemi","gatnaşyjylaryň_jemi","talyplar","mugallymlar","ene-atalar","pudak-edaralar","ýaş(0-17)","ýaş(18-29)","ýaş(30-59)","60+","zenan","erkek","tema_sany","teklip_sany"]
 
 
         selected_column = st.selectbox("Sütün saýlaň", cols)
@@ -355,11 +355,11 @@ elif page == "Maglumat seljerişi":
         with col2:
             # Participants by Role
             if BBM and not All:
-                roles = ['okuwçylar', 'mugallymlar', 'ene-atalar', 'pudak_edaralar']
+                roles = ['okuwçylar', 'mugallymlar', 'ene-atalar', 'pudak-edaralar']
             elif BBM and All:
-                roles = ['talyplar','okuwçylar', 'mugallymlar', 'ene-atalar', 'pudak_edaralar']
+                roles = ['talyplar','okuwçylar', 'mugallymlar', 'ene-atalar', 'pudak-edaralar']
             else:
-                roles = ['talyplar', 'mugallymlar', 'ene-atalar', 'pudak_edaralar']
+                roles = ['talyplar', 'mugallymlar', 'ene-atalar', 'pudak-edaralar']
 
             
             role_totals = combined_df[roles].sum()
@@ -394,20 +394,20 @@ elif page == "Maglumat seljerişi":
         with col2:
             # st.metric(label="Total Participants", value=total_participants)
             if BBM and not All:
-                role_totals = combined_df[['okuwçylar', 'mugallymlar', 'ene-atalar', 'pudak_edaralar']].sum()
+                role_totals = combined_df[['okuwçylar', 'mugallymlar', 'ene-atalar', 'pudak-edaralar']].sum()
             elif BBM and All:
-                role_totals = combined_df[['talyplar', 'okuwçylar', 'mugallymlar', 'ene-atalar', 'pudak_edaralar']].sum()
+                role_totals = combined_df[['talyplar', 'okuwçylar', 'mugallymlar', 'ene-atalar', 'pudak-edaralar']].sum()
             else:
-                role_totals = combined_df[['talyplar', 'mugallymlar', 'ene-atalar', 'pudak_edaralar']].sum()
+                role_totals = combined_df[['talyplar', 'mugallymlar', 'ene-atalar', 'pudak-edaralar']].sum()
             st.write("### Hünäri boýunça bölünişi")
             fig, ax = plt.subplots()
             fig, ax = plt.subplots(figsize=(6, 4))  # Adjust width and height
             if BBM and not All:
-                ax.pie(role_totals, labels=['okuwçylar', 'mugallymlar', 'ene-atalar', 'pudak_edaralar'], autopct='%1.1f%%', startangle=90, colors=["#90ee90", "#87cefa", "#f59393", "#cb7bed"])
+                ax.pie(role_totals, labels=['okuwçylar', 'mugallymlar', 'ene-atalar', 'pudak-edaralar'], autopct='%1.1f%%', startangle=90, colors=["#90ee90", "#87cefa", "#f59393", "#cb7bed"])
             elif BBM and All:
-                ax.pie(role_totals, labels=['talyplar', 'okuwçylar', 'mugallymlar', 'ene-atalar', 'pudak_edaralar'], autopct='%1.1f%%', startangle=90, colors=["#90ee90", "#87cefa", "#f59393", "#cb7bed", "#f2f277"])
+                ax.pie(role_totals, labels=['talyplar', 'okuwçylar', 'mugallymlar', 'ene-atalar', 'pudak-edaralar'], autopct='%1.1f%%', startangle=90, colors=["#90ee90", "#87cefa", "#f59393", "#cb7bed", "#f2f277"])
             else:
-                ax.pie(role_totals, labels=['talyplar', 'mugallymlar', 'ene-atalar', 'pudak_edaralar'], autopct='%1.1f%%', startangle=90, colors=["#90ee90", "#87cefa", "#f59393", "#cb7bed"])
+                ax.pie(role_totals, labels=['talyplar', 'mugallymlar', 'ene-atalar', 'pudak-edaralar'], autopct='%1.1f%%', startangle=90, colors=["#90ee90", "#87cefa", "#f59393", "#cb7bed"])
             ax.axis('equal')
             st.pyplot(fig)
         with col3:
@@ -448,11 +448,11 @@ elif page == "Maglumat seljerişi":
             filtered_data = combined_df[combined_df["ady"].isin(selected_universities)]
 
             if BBM and not All:
-                job_totals = filtered_data[['okuwçylar', 'mugallymlar', 'ene-atalar', 'pudak_edaralar']].sum()
+                job_totals = filtered_data[['okuwçylar', 'mugallymlar', 'ene-atalar', 'pudak-edaralar']].sum()
             elif BBM and All:
-                job_totals = filtered_data[['okuwçylar','talyplar', 'mugallymlar', 'ene-atalar', 'pudak_edaralar']].sum()
+                job_totals = filtered_data[['okuwçylar','talyplar', 'mugallymlar', 'ene-atalar', 'pudak-edaralar']].sum()
             else:
-                job_totals = filtered_data[['talyplar', 'mugallymlar', 'ene-atalar', 'pudak_edaralar']].sum()
+                job_totals = filtered_data[['talyplar', 'mugallymlar', 'ene-atalar', 'pudak-edaralar']].sum()
 
                 # sorted_suggestions = suggestions_totals.sort_values(ascending=True)
             st.bar_chart(job_totals)
@@ -470,7 +470,7 @@ elif page == "Maglumat seljerişi":
 
 
     with st.expander("Bap: Aşaky we ýokarky seljerişi"):
-        selected_column = st.selectbox("Reýting üçin sütüni saýlaň", ["ýygnaklaryň_jemi","gatnaşyjylaryň_jemi","talyplar","mugallymlar","ene-atalar","pudak_edaralar","ýaş(0-17)","ýaş(18-29)","ýaş(30-59)","60+","zenan","erkek","tema_sany","teklip_sany"])
+        selected_column = st.selectbox("Reýting üçin sütüni saýlaň", ["ýygnaklaryň_jemi","gatnaşyjylaryň_jemi","talyplar","mugallymlar","ene-atalar","pudak-edaralar","ýaş(0-17)","ýaş(18-29)","ýaş(30-59)","60+","zenan","erkek","tema_sany","teklip_sany"])
 
     # Get the Top 5 based on the selected column
         top_5 = combined_df.nlargest(5, selected_column)[["ady", selected_column]]
@@ -664,10 +664,11 @@ elif page == "Saýlanan teklipler":
     df_YOM_S = pd.read_csv('FINAL_YOM.csv')
     df_OHOM_S = pd.read_csv('FINAL_OHOM.csv')
     df_HTOM_S = pd.read_csv('FINAL_HTOM.csv')
+    df_BBM_S = pd.read_csv('FINAL_BBM.csv')
     
     data_type = st.selectbox(
         "Maglumat saýlaň",
-        ["ÝOM", "OHOM",  "HTOM", "Ählisi"] )
+        ["ÝOM", "OHOM",  "HTOM", "BBM" ,"Ählisi"] )
     
     if data_type == "ÝOM":
         combined_df = pd.concat([df_YOM_S])
@@ -675,9 +676,11 @@ elif page == "Saýlanan teklipler":
         combined_df = pd.concat([df_OHOM_S])
     elif data_type == "HTOM":
         combined_df = pd.concat([df_HTOM_S])
+    elif data_type == "BBM":
+        combined_df = pd.concat([df_BBM_S])
     else:
         flagAll = True
-        combined_df = pd.concat([df_OHOM_S, df_HTOM_S, df_YOM_S])
+        combined_df = pd.concat([df_OHOM_S, df_HTOM_S, df_YOM_S, df_BBM_S])
     
     # combined_df["number"] = range(1, len(combined_df) + 1)
     combined_df.fillna("YOK", inplace=True)
