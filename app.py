@@ -405,7 +405,6 @@ elif page == "Maglumat seljerişi":
 
             gender_totals = combined_df[['zenan', 'erkek']].sum()
             st.write("### Jynsy boýunça bölünişi")
-            plt.rcParams["font.family"] = "Times New Roman"
             fig, ax = plt.subplots()
             fig, ax = plt.subplots(figsize=(6, 4))  # Adjust width and height
             ax.pie(gender_totals, labels=['Zenan', 'Erkek'], autopct='%1.1f%%', startangle=90, colors=["#f59393", "#87cefa" ], textprops={"fontsize": 15})
