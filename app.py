@@ -256,6 +256,7 @@ elif page == "Maglumat seljerişi":
         BBM = True
     else:
         piecharts = True
+        BBM = True
         combined_df = pd.concat([df_YOM_1, df_OHOM_1, df_HTOM_1, df_BBM_1])
     
     combined_df["number"] = range(1, len(combined_df) + 1)
