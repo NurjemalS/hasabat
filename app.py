@@ -187,7 +187,7 @@ if page == "Umumy gözden geçiriş":
         (YOM_suggestions / total_suggestions) * 100,
         (OHOM_suggestions / total_suggestions) * 100,
         (HTOM_suggestions / total_suggestions) * 100,
-        (BBM_suggestions / total_meetings) * 100
+        (BBM_suggestions / total_suggestions) * 100
 
     ]
 
